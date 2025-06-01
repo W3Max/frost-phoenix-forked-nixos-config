@@ -2,7 +2,7 @@
 
 init() {
     # Vars
-    CURRENT_USERNAME='frostphoenix'
+    CURRENT_USERNAME='w3max'
 
     # Colors
     NORMAL=$(tput sgr0)
@@ -41,7 +41,7 @@ print_header() {
     |_| \_|_/_/\_\\\\___/|___/ |___|_| |_|___/\__\__,_|_|_|\___|_| 
 
 
-                  $BLUE https://github.com/Frost-Phoenix $RED 
+                  $BLUE https://github.com/w3max $RED 
       ! To make sure everything runs correctly DONT run as root ! $GREEN
                         -> '"./install.sh"' $NORMAL
 
