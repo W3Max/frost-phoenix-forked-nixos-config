@@ -4,7 +4,7 @@
     enable = true;
 
     userName = "w3max";
-    userEmail = "me@w3max.com";
+    userEmail = "m@w3max.com";
 
     extraConfig = {
       init.defaultBranch = "main";
