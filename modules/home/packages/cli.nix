@@ -32,8 +32,16 @@
     yt-dlp-light
 
     ## TUI
+<<<<<<< HEAD
     epy # ebook reader
     gtt # google translate TUI
+||||||| parent of a59c716 (pkgs: remove epy)
+    epy                               # ebook reader
+    gtt                               # google translate TUI
+=======
+    # epy                               # ebook reader
+    gtt                               # google translate TUI
+>>>>>>> a59c716 (pkgs: remove epy)
     programmer-calculator
     smassh # typing test in the terminal
     toipe # typing test in the terminal
