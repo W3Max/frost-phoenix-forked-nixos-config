@@ -2,15 +2,15 @@
 {
   home.packages = with pkgs; [
     ## Better core utils
-    duf                               # disk information
-    eza                               # ls replacement
-    fd                                # find replacement
-    gping                             # ping with a graph
-    gtrash                            # rm replacement, put deleted files in system trash
-    hexyl                             # hex viewer
-    man-pages                         # extra man pages
-    ncdu                              # disk space
-    ripgrep                           # grep replacement
+    duf # disk information
+    eza # ls replacement
+    fd # find replacement
+    gping # ping with a graph
+    gtrash # rm replacement, put deleted files in system trash
+    hexyl # hex viewer
+    man-pages # extra man pages
+    ncdu # disk space
+    ripgrep # grep replacement
     tldr
 
     ## Tools / useful cli
@@ -31,16 +31,8 @@
     yt-dlp-light
 
     ## TUI
-<<<<<<< HEAD
-    epy # ebook reader
-    gtt # google translate TUI
-||||||| parent of a59c716 (pkgs: remove epy)
-    epy                               # ebook reader
-    gtt                               # google translate TUI
-=======
     # epy                               # ebook reader
-    gtt                               # google translate TUI
->>>>>>> a59c716 (pkgs: remove epy)
+    gtt # google translate TUI
     programmer-calculator
     smassh # typing test in the terminal
     toipe # typing test in the terminal
