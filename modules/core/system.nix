@@ -33,6 +33,13 @@
 
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
-  nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "ventoy-1.1.05"
+    ];
+  };
+
   system.stateVersion = "24.05";
 }

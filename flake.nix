@@ -47,11 +47,14 @@
     let
       username = "w3max";
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      lib = nixpkgs.lib;
+      # pkgs = import nixpkgs {
+      #   inherit system;
+      #   config.allowUnfree = true;
+      #   config.permittedInsecurePackages = [
+      #     "ventoy-1.1.05"
+      #   ];
+      # };
+      # lib = nixpkgs.lib;
     in
     {
       nixosConfigurations = {

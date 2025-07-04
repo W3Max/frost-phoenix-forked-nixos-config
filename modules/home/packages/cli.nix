@@ -88,5 +88,8 @@
 
     winetricks
     wineWowPackages.waylandFull
+
+    ## For Automated Homelab Project
+    ventoy
   ];
 }
