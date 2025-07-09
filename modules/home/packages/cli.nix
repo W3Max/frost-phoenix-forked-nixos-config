@@ -91,5 +91,6 @@
 
     ## For Automated Homelab Project
     ventoy
+    expect
   ];
 }

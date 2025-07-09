@@ -13,6 +13,7 @@
     ## Office
     libreoffice
     gnome-calculator
+    discord
 
     ## Utility
     dconf-editor

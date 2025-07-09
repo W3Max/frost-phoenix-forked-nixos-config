@@ -51,11 +51,11 @@
 
       # Zig
       # "zig.initialSetupDone" = true;
-      "zig.checkForUpdate" = false;
-      "zig.zls.path" = "zls";
-      "zig.path" = "zig";
-      "zig.revealOutputChannelOnFormattingError" = false;
-      "zig.zls.enableInlayHints" = false;
+      # "zig.checkForUpdate" = false;
+      # "zig.zls.path" = "zls";
+      # "zig.path" = "zig";
+      # "zig.revealOutputChannelOnFormattingError" = false;
+      # "zig.zls.enableInlayHints" = false;
 
       "nix.serverPath" = "nixd";
       "nix.enableLanguageServer" = true;
