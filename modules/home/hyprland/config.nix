@@ -383,8 +383,8 @@ in
     };
 
     extraConfig = "
-       monitor=HDMI-A-2,1920x1080@60.00Hz,0x0,1
-       monitor=DP-1,2560x1440@165.08Hz,1920x0,1
+       monitor=HDMI-A-2,2560x1440@165.08Hz,1920x0,1
+       monitor=DP-1,1920x1080@60.00Hz,0x0,1
 
       xwayland {
         force_zero_scaling = true
