@@ -31,7 +31,7 @@
     git
   ];
 
-  time.timeZone = "Europe/Paris";
+  time.timeZone = "America/Montreal";
   i18n.defaultLocale = "en_US.UTF-8";
 
   nixpkgs.config = {

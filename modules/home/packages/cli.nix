@@ -29,6 +29,7 @@
     translate-shell # cli translator
     woomer
     yt-dlp-light
+    nix-tree
 
     ## TUI
     # epy                               # ebook reader
