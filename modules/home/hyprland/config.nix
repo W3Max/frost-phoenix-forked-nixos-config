@@ -380,7 +380,10 @@ in
         "f[1], gapsout:0, gapsin:0"
       ];
 
-      monitor = [ "=,preferred,auto,auto" ];
+      monitor = [
+        "HDMI-A-2,2560x1440@165.08Hz,0x0,1"
+        "DP-1,1920x1080@60.00Hz,2560x0,1"
+      ];
 
       xwayland = {
         force_zero_scaling = true;

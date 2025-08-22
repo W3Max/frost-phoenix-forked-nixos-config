@@ -9,7 +9,17 @@
         commands = [
           {
             command = "/etc/profiles/per-user/w3max/bin/deno";
-            options = [ "NOPASSWD" ];
+            options = [
+              "NOPASSWD"
+              "SETENV"
+            ];
+          }
+          {
+            command = "/etc/profiles/per-user/w3max/bin/expect";
+            options = [
+              "NOPASSWD"
+              "SETENV"
+            ];
           }
         ];
       }
