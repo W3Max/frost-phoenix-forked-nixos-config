@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     ## Multimedia
     audacity
-    gimp
+    # gimp
     obs-studio
     pavucontrol
     soundwireserver
