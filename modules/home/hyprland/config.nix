@@ -379,16 +379,12 @@ in
         "w[tg1], gapsout:0, gapsin:0"
         "f[1], gapsout:0, gapsin:0"
       ];
+
+      monitor = [ "=,preferred,auto,auto" ];
+
+      xwayland = {
+        force_zero_scaling = true;
+      };
     };
-
-    extraConfig = "
-       monitor=DP-1,1920x1080@60.00Hz,2560x0,1
-       monitor=HDMI-A-2,2560x1440@165.08Hz,0x0,1
-       
-
-      xwayland {
-        force_zero_scaling = true
-      }
-    ";
   };
 }
