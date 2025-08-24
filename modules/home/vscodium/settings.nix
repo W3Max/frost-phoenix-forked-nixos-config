@@ -23,6 +23,7 @@
       "editor.formatOnType" = true;
       "editor.formatOnPaste" = true;
       "editor.inlayHints.enabled" = "off";
+      "editor.defaultFormatter" = "denoland.vscode-deno";
 
       "workbench.layoutControl.type" = "menu";
       "workbench.editor.limit.enabled" = true;
