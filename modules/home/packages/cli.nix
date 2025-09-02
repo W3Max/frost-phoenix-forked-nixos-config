@@ -69,6 +69,7 @@
 
     ## AI
     claude-code
+    codex
 
     ## Utilities
     entr # perform action when file change
