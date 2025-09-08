@@ -71,6 +71,8 @@
     claude-code
     codex
 
+    exfat
+
     ## Utilities
     entr # perform action when file change
     ffmpeg
