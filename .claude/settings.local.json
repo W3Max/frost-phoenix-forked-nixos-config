@@ -4,7 +4,8 @@
       "Read(//home/w3max/Documents/Projects/new-nixos-config/**)",
       "Bash(nix flake check:*)",
       "Bash(nix flake show:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(nix run github:clan-lol/clan-core:*)"
     ],
     "deny": [],
     "ask": []

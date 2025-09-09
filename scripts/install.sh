@@ -44,7 +44,7 @@ print_header() {
 
                   $BLUE https://github.com/w3max $RED 
       ! To make sure everything runs correctly DONT run as root ! $GREEN
-                        -> '"./install.sh"' $NORMAL
+                        -> '"./scripts/install.sh"' $NORMAL
 
     "
 }
@@ -58,8 +58,8 @@ get_username() {
 }
 
 set_username() {
-    sed -i -e "s/${CURRENT_USERNAME}/${username}/g" ./flake.nix
-    sed -i -e "s/${CURRENT_USERNAME}/${username}/g" ./modules/home/audacious.nix
+    sed -i -e "s/${CURRENT_USERNAME}/${username}/g" ../flake.nix
+    sed -i -e "s/${CURRENT_USERNAME}/${username}/g" ../modules/home/audacious/audacious.nix
 }
 
 get_host() {
@@ -97,13 +97,13 @@ install() {
 
     # Copy the wallpapers
     echo -e "Copying all ${MAGENTA}wallpapers${NORMAL}"
-    cp -r wallpapers/wallpaper.png ~/Pictures/wallpapers
-    cp -r wallpapers/otherWallpaper/gruvbox/* ~/Pictures/wallpapers/others/
-    cp -r wallpapers/otherWallpaper/nixos/* ~/Pictures/wallpapers/others/
+    cp -r ../wallpapers/wallpaper.png ~/Pictures/wallpapers
+    cp -r ../wallpapers/otherWallpaper/gruvbox/* ~/Pictures/wallpapers/others/
+    cp -r ../wallpapers/otherWallpaper/nixos/* ~/Pictures/wallpapers/others/
 
     # Get the hardware configuration
-    echo -e "Copying ${MAGENTA}/etc/nixos/hardware-configuration.nix${NORMAL} to ${MAGENTA}./machines/${HOST}/${NORMAL}\n"
-    cp /etc/nixos/hardware-configuration.nix machines/${HOST}/hardware-configuration.nix
+    echo -e "Copying ${MAGENTA}/etc/nixos/hardware-configuration.nix${NORMAL} to ${MAGENTA}../machines/${HOST}/${NORMAL}\n"
+    cp /etc/nixos/hardware-configuration.nix ../machines/${HOST}/hardware-configuration.nix
 
     # Last Confirmation
     echo -en "You are about to start the system build, do you want to process ? "
@@ -111,6 +111,7 @@ install() {
 
     # Build the system (flakes + home manager)
     echo -e "\nBuilding the system...\n"
+    cd ..
     sudo nixos-rebuild switch --flake .#${HOST}
 }
 

@@ -5,24 +5,24 @@
    <br>
       <img src="./.github/assets/pallet/pallet-0.png" width="600px" /> <br>
 
-<div align="center">
-      <p></p>
-      <div align="center">
-         <a href="https://github.com/w3max/nixos-config/stargazers">
-            <img src="https://img.shields.io/github/stars/w3max/nixos-config?color=FABD2F&labelColor=282828&style=for-the-badge&logo=starship&logoColor=FABD2F">
-         </a>
-         <a href="https://github.com/w3max/nixos-config/">
-            <img src="https://img.shields.io/github/repo-size/w3max/nixos-config?color=B16286&labelColor=282828&style=for-the-badge&logo=github&logoColor=B16286">
-         </a>
-         <a = href="https://nixos.org">
-            <img src="https://img.shields.io/badge/NixOS-unstable-blue.svg?style=for-the-badge&labelColor=282828&logo=NixOS&logoColor=458588&color=458588">
-         </a>
-         <a href="https://github.com/w3max/nixos-config/blob/main/LICENSE">
-            <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=282828&colorB=98971A&logo=unlicense&logoColor=98971A&"/>
-         </a>
-      </div>
-      <br>
-   </div>
+    <p></p>
+    <div align="center">
+       <a href="https://github.com/w3max/nixos-config/stargazers">
+          <img src="https://img.shields.io/github/stars/w3max/nixos-config?color=FABD2F&labelColor=282828&style=for-the-badge&logo=starship&logoColor=FABD2F">
+       </a>
+       <a href="https://github.com/w3max/nixos-config/">
+          <img src="https://img.shields.io/github/repo-size/w3max/nixos-config?color=B16286&labelColor=282828&style=for-the-badge&logo=github&logoColor=B16286">
+       </a>
+       <a = href="https://nixos.org">
+          <img src="https://img.shields.io/badge/NixOS-unstable-blue.svg?style=for-the-badge&labelColor=282828&logo=NixOS&logoColor=458588&color=458588">
+       </a>
+       <a href="https://github.com/w3max/nixos-config/blob/main/LICENSE">
+          <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=282828&colorB=98971A&logo=unlicense&logoColor=98971A&"/>
+       </a>
+    </div>
+    <br>
+
+</div>
 </h1>
 
 ### 🖼️ Gallery
@@ -36,30 +36,6 @@
    <img src="./.github/assets/screenshots/hyprlock.png" style="margin-bottom: 15px;" /> <br>
    Screenshots last updated <b>2025-01-05</b>
 </p>
-
-Here is my previous Catppuccin rice. You can find it
-[here](https://github.com/w3max/nixos-config/tree/catppuccin)
-
-<details>
-<summary>
-Catppuccin (EXPAND)
-</summary>
-<p align="center">
-   <img src="./.github/assets/screenshots/catppuccin/1.png" style="margin-bottom: 10px;" /> <br>
-   <img src="./.github/assets/screenshots/catppuccin/2.png" style="margin-bottom: 10px;" /> <br>
-   <img src="./.github/assets/screenshots/catppuccin/3.png" style="margin-bottom: 10px;" /> <br>
-</p>
-   <details>
-   <summary>
-   Old Catppuccin (EXPAND)
-   </summary>
-   <p align="center">
-      <img src="./.github/assets/screenshots/catppuccin/old/1.old.png" style="margin-bottom: 10px;" /> <br>
-      <img src="./.github/assets/screenshots/catppuccin/old/2.old.png" style="margin-bottom: 10px;" /> <br>
-      <img src="./.github/assets/screenshots/catppuccin/old/3.old.png" style="margin-bottom: 10px;" /> <br>
-   </p>
-   </details>
-</details>
 
 # 🗃️ Overview
 
@@ -107,13 +83,14 @@ management:
     subscriptions
   - [clan.nix](nix/clan.nix) 👥 clan framework configuration and machine
     metadata
-- [hosts](hosts) 🌳 per-host configurations that contain machine specific
+- [machines](machines) 🌳 per-host configurations that contain machine specific
   settings
-  - [desktop](hosts/desktop/) 🖥️ Desktop specific configuration + hyprland
+  - [desktop](machines/desktop/) 🖥️ Desktop specific configuration + hyprland
     monitors
-  - [laptop](hosts/laptop/) 💻 Laptop specific configuration + power management
-  - [vm](hosts/vm/) 🗄️ VM specific configuration
-  - [w3max-workstation](hosts/w3max-workstation/) 🎮 High-end AMD gaming/dev
+  - [laptop](machines/laptop/) 💻 Laptop specific configuration + power
+    management
+  - [vm](machines/vm/) 🗄️ VM specific configuration
+  - [w3max-workstation](machines/w3max-workstation/) 🎮 High-end AMD gaming/dev
     workstation with disko config
 - [modules](modules) 🍱 semantic modularized NixOS configurations
   - [common.nix](modules/common.nix) ⚙️ Essential system configuration (all
@@ -126,6 +103,10 @@ management:
   - [core/](modules/core/) ⚙️ Individual NixOS modules
   - [home/](modules/home/) 🏠 Individual home-manager modules
 - [wallpapers](wallpapers/) 🌄 wallpapers collection
+- [scripts/](scripts/) 🛠️ deployment and installation scripts
+  - [install.sh](scripts/install.sh) 📦 traditional installation script
+  - [deploy.sh](scripts/deploy.sh) 🚀 remote deployment script with
+    nixos-anywhere
 
 ### 🏠 Machine Configurations
 
@@ -460,6 +441,25 @@ Keybindings
 
 # 🚀 Installation
 
+## 🎯 Which Installation Method to Choose?
+
+This configuration offers **two complementary deployment approaches**:
+
+| Use Case                 | Tool                                 | Best For                                                                                                          |
+| ------------------------ | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| **Initial Installation** | `scripts/deploy.sh` (nixos-anywhere) | • Fresh machine setup<br>• One-off installations<br>• Hardware detection needed<br>• Maximum control over process |
+| **Ongoing Management**   | `clan machines` commands             | • Configuration updates<br>• Multi-machine coordination<br>• Service orchestration<br>• Infrastructure operations |
+
+### 🏁 Quick Decision Guide
+
+```
+New machine? → Use deploy.sh
+Existing setup? → Use clan commands
+Multiple machines? → deploy.sh first, then clan
+```
+
+---
+
 ## 📦 Traditional Installation
 
 > [!CAUTION]
@@ -508,7 +508,7 @@ cd nixos-config
 Execute and follow the installation script :
 
 ```bash
-./install.sh
+./scripts/install.sh
 ```
 
 #### 4. **Reboot**
@@ -528,11 +528,20 @@ For remote installations on fresh machines or VMs:
 
 #### 2. **Configure disk layout (optional)**
 
-- Edit or create `hosts/your-machine/disk-config.nix`
-- See `hosts/w3max-workstation/disk-config.nix` for a comprehensive example
+- Edit or create `machines/your-machine/disk-config.nix`
+- See `machines/w3max-workstation/disk-config.nix` for a comprehensive example
 - Supports complex setups: multiple drives, Btrfs subvolumes, ZFS, RAID
 
 #### 3. **Deploy remotely**
+
+**Easy deployment with script (recommended):**
+
+```bash
+# Use the automated deploy script
+./scripts/deploy.sh 192.168.1.100
+```
+
+**Manual deployment:**
 
 ```bash
 # Install to a remote machine
@@ -552,32 +561,86 @@ This will:
 - Install NixOS with your complete configuration
 - Automatically reboot into your configured system
 
-## 🏗️ Clan Management
+## 🏗️ Clan Management (Ongoing Operations)
 
-For managing multiple machines with Clan:
+**Use Clan for managing existing systems and multi-machine coordination.**
 
-#### 1. **List available machines**
+### 🔍 Discovery and Status
 
 ```bash
+# List all configured machines
 nix run github:clan-lol/clan-core -- machines list
+
+# Check machine status
+nix run github:clan-lol/clan-core -- machines status
+
+# Show machine details
+nix run github:clan-lol/clan-core -- machines show w3max-workstation
 ```
 
-#### 2. **Deploy to specific machines**
+### 🚀 Deployment Operations
 
 ```bash
-# Deploy configuration updates
-nix run github:clan-lol/clan-core -- machines deploy your-machine-name
+# Deploy configuration updates to specific machine
+nix run github:clan-lol/clan-core -- machines deploy w3max-workstation
 
-# Deploy all machines
+# Deploy to all machines
 nix run github:clan-lol/clan-core -- machines deploy
+
+# Deploy with specific flake update
+nix run github:clan-lol/clan-core -- machines deploy --update-all
 ```
 
-#### 3. **Available machines in this config**
+### 🌐 Multi-Machine Coordination
 
-- `desktop` - Full-featured desktop setup
-- `laptop` - Mobile development machine
-- `vm` - Minimal testing environment
-- `w3max-workstation` - High-end AMD gaming/dev station
+```bash
+# Set up machine mesh networking
+nix run github:clan-lol/clan-core -- machines add-peer desktop laptop
+
+# Coordinate services across machines  
+nix run github:clan-lol/clan-core -- services start backup-sync
+
+# Monitor cluster status
+nix run github:clan-lol/clan-core -- machines health-check
+```
+
+### 📋 Available Machines
+
+| Machine             | Description                     | Tags                     | Best Managed With   |
+| ------------------- | ------------------------------- | ------------------------ | ------------------- |
+| `desktop`           | Full-featured desktop setup     | desktop                  | Clan (post-install) |
+| `laptop`            | Mobile development machine      | laptop, mobile           | Clan (post-install) |
+| `vm`                | Minimal testing environment     | vm, test                 | Both tools          |
+| `w3max-workstation` | High-end AMD gaming/dev station | desktop, gaming, storage | deploy.sh → clan    |
+
+### 🔄 Migration from nixos-anywhere to Clan
+
+After initial deployment with `deploy.sh`, transition to Clan management:
+
+```bash
+# 1. Verify machine is accessible
+nix run github:clan-lol/clan-core -- machines list
+
+# 2. Test configuration deployment
+nix run github:clan-lol/clan-core -- machines deploy w3max-workstation --dry-run
+
+# 3. Switch to Clan management
+nix run github:clan-lol/clan-core -- machines deploy w3max-workstation
+
+# 4. Enable additional services as needed
+nix run github:clan-lol/clan-core -- services enable zerotier
+```
+
+---
+
+## 📚 Additional Documentation
+
+- **[Clan Workflows Guide](docs/CLAN-WORKFLOWS.md)** - Detailed workflows for
+  managing your infrastructure with Clan
+- **[Migration Guide](docs/MIGRATION-GUIDE.md)** - Step-by-step guide for
+  transitioning from nixos-anywhere to Clan management
+
+---
 
 #### 5. **Manual config**
 

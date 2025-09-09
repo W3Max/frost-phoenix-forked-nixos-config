@@ -13,6 +13,7 @@ in
         inherit self inputs username;
       };
       modules = [
+        inputs.clan-core.nixosModules.clanCore
         inputs.disko.nixosModules.disko
         ../modules/common.nix
         ../modules/desktop.nix
@@ -30,6 +31,7 @@ in
         inherit self inputs username;
       };
       modules = [
+        inputs.clan-core.nixosModules.clanCore
         inputs.disko.nixosModules.disko
         ../modules/common.nix
         ../modules/desktop.nix
@@ -46,6 +48,7 @@ in
         inherit self inputs username;
       };
       modules = [
+        inputs.clan-core.nixosModules.clanCore
         inputs.disko.nixosModules.disko
         ../modules/common.nix
         ../modules/desktop.nix
@@ -62,8 +65,8 @@ in
       };
       modules = [
         # Core modules
+        inputs.clan-core.nixosModules.clanCore
         inputs.disko.nixosModules.disko
-        # inputs.clan-core.nixosModules.default  # Enable when ready
         
         # Hardware optimizations
         inputs.nixos-hardware.nixosModules.common-cpu-amd
