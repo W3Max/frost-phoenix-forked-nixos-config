@@ -44,10 +44,10 @@
 🎉 **Latest Updates**: This configuration has been significantly enhanced with enterprise-grade features:
 
 ### 🔐 **Security & Secret Management**
-- **✅ Clan-native secret management** with age encryption
-- **✅ Per-machine access control** for all secrets
-- **✅ Automated secure deployment** via Nix store
-- **✅ Admin keypair generated** and all machines configured
+- **✅ SOPS + Age encryption** for all secrets
+- **✅ Per-machine access control** with individual keys
+- **✅ Secure key storage** outside repository at `/var/lib/sops-nix/key.txt`
+- **✅ All secrets encrypted** and safe to commit
 
 ### 🛠️ **Development Excellence**
 - **✅ Comprehensive pre-commit hooks** for code quality
@@ -88,11 +88,11 @@ This configuration supports advanced deployment and infrastructure management:
 
 ### 🔐 **Enterprise-Grade Security**
 
-- **Age-encrypted secrets**: Modern cryptography with per-machine access control
-- **Clan secret management**: Native integration with infrastructure management
-- **Secure deployment**: Secrets deployed via Nix store with proper permissions
+- **SOPS + Age encryption**: Modern cryptography with per-machine access control
+- **Secure key management**: Private keys stored outside repository
+- **Per-machine secrets**: Each machine can only decrypt its authorized secrets
 - **Access control**: User and machine-level permissions for all secrets
-- **Key rotation**: Easy secret updates and key management
+- **Safe to commit**: All secrets encrypted, repository is public-safe
 
 ### 🛠️ **Development Excellence**
 
@@ -678,7 +678,8 @@ nix run github:clan-lol/clan-core -- services enable zerotier
 - **[Clan Management](docs/CLAN-MANAGEMENT.md)** - Complete Clan framework reference
 
 ### Security & Development
-- **[Security Guide](docs/SECURITY.md)** - Secret management with age encryption
+- **[Security Guide](docs/SECURITY.md)** - Secret management with SOPS + Age encryption
+- **[Key Distribution](docs/KEY_DISTRIBUTION.md)** - How to deploy private keys to machines
 - **[Development Workflow](docs/DEVELOPMENT.md)** - Pre-commit hooks, linting, and code quality
 - **[Linting Reference](docs/LINTING.md)** - Fast linting commands and hook configuration
 

@@ -10,7 +10,6 @@
     ./home/flow.nix
     ./home/nix-search/nix-search.nix
     ./home/superfile/superfile.nix
-    ./home/syncthing.nix
     ./home/packages
     ./home/scripts/scripts.nix
   ];

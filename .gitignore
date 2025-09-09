@@ -1,2 +1,8 @@
 CLAUDE.md
 .claude
+
+# Private keys - NEVER commit these
+*.key
+machines/*/secrets/
+/private-keys/
+/nixos-private-keys*/

@@ -5,7 +5,8 @@
   # Configure sops with machine-specific age key
   sops = {
     defaultSopsFile = ../../sops/secrets/user-password.yaml;
-    age.keyFile = "/etc/machine-age-key";
+    # Key should be manually placed at this location on each machine
+    age.keyFile = "/var/lib/sops-nix/key.txt";
 
     secrets = {
       # User password secret

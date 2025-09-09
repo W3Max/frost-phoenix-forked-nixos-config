@@ -1,12 +1,18 @@
 ---
 keys:
-  - &w3max age1ee87weqkcdtpauhsv6drxstwx03yswn05fvalssvfweshcpt9pjs9yw32x
-  - &desktop age1c6c4qdag62p8sj4dgwerhkfgqnxfckdz486d85s5de09gnpy23kslnnxj6
-  - &laptop age1f4qmwrp7l2wdvc2g984q9lqglrqt82gz809han9u8hduuxsf643qns9uty
-  - &vm age1vnwk78cp24q7gqhuel0xm4vvetqz3y8affu7f8jpwv0e4qhtgetq07lpah
-  - &workstation age1jyfm0tmscyswmck0my95tdte2wyydhlww7k0fpxcwcjgwkngma3sdsk6zf
+  # Admin key
+  - &w3max age1drplmvrk3sd89e8gedxenyt3dwtrefcv0mcuvl3xy0qv3ugrzcfqna6xzf
+  # Machine keys
+  - &desktop age1ll33dvms7wzvzhu9na50d9gawwtctr766mcndmdh3kxy8qqvmvxqeqjqw5
+  - &laptop age1cyz7vmnew6kzx93qzcs8hmdqrgm8fxw2gsjjcgcgwefg4vzth5vsq3fyun
+  - &vm age17nmy0n2rgma3mdn7qtdmltcmju6z0c8amnyduuyzjtd85lt2e4cqgfpeqk
+  - &workstation age1220h0yey8y6g8esf73fccpw0qwtmh43005ewl5dkjwf3ct2y25xsnwm3x2
 
 creation_rules:
   - path_regex: .*
     age: >-
-      age1ee87weqkcdtpauhsv6drxstwx03yswn05fvalssvfweshcpt9pjs9yw32x
+      age1drplmvrk3sd89e8gedxenyt3dwtrefcv0mcuvl3xy0qv3ugrzcfqna6xzf,
+      age1ll33dvms7wzvzhu9na50d9gawwtctr766mcndmdh3kxy8qqvmvxqeqjqw5,
+      age1cyz7vmnew6kzx93qzcs8hmdqrgm8fxw2gsjjcgcgwefg4vzth5vsq3fyun,
+      age17nmy0n2rgma3mdn7qtdmltcmju6z0c8amnyduuyzjtd85lt2e4cqgfpeqk,
+      age1220h0yey8y6g8esf73fccpw0qwtmh43005ewl5dkjwf3ct2y25xsnwm3x2

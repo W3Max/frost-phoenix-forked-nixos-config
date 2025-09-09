@@ -23,7 +23,8 @@ Welcome to the comprehensive documentation for this NixOS configuration! This se
 
 | Document | Purpose | Audience |
 |----------|---------|----------|
-| [**Security Guide**](SECURITY.md) | Secret management, encryption | Security-focused |
+| [**Security Guide**](SECURITY.md) | Secret management, SOPS + Age encryption | Security-focused |
+| [**Key Distribution**](KEY_DISTRIBUTION.md) | Private key deployment to machines | Administrators |
 | [**Development Workflow**](DEVELOPMENT.md) | Code quality, pre-commit hooks | Developers |
 | [**Linting Reference**](LINTING.md) | Fast linting commands | Contributors |
 
@@ -36,7 +37,7 @@ Welcome to the comprehensive documentation for this NixOS configuration! This se
 
 ### 🏢 Infrastructure Admin
 1. **Deployment**: [Migration Guide](MIGRATION-GUIDE.md) → [Clan Management](CLAN-MANAGEMENT.md)
-2. **Security Setup**: [Security Guide](SECURITY.md) for secret management
+2. **Security Setup**: [Security Guide](SECURITY.md) → [Key Distribution](KEY_DISTRIBUTION.md)
 3. **Operations**: [Clan Workflows](CLAN-WORKFLOWS.md) for ongoing management
 
 ### 🛠️ Developer/Contributor
@@ -81,25 +82,27 @@ graph LR
 
 ```mermaid
 graph TB
-    A[Admin Age Key] --> B[User Management]
-    C[Machine Age Keys] --> D[Per-Machine Access]
+    A[Admin Age Key] --> B[Secret Management]
+    C[Machine Private Keys] --> D[Local Decryption]
     E[Encrypted Secrets] --> F[sops/secrets/]
+    G[Machine Public Keys] --> H[sops/machines/]
 
-    B --> G[Clan Secret Commands]
-    D --> G
-    F --> G
+    B --> I[SOPS Encryption]
+    F --> I
+    H --> I
 
-    G --> H[Automatic Deployment]
-    H --> I[NixOS Configuration]
+    I --> J[Encrypted Files in Repo]
+    D --> K[Runtime Decryption]
+    J --> K
 ```
 
 ## 🛡️ Security Model
 
 **Zero Trust Principles:**
-- All secrets encrypted with age
-- Per-machine access control
-- No plaintext secrets in repository
-- Automated secure deployment
+- All secrets encrypted with SOPS + Age
+- Per-machine access control with individual keys
+- No plaintext secrets or private keys in repository
+- Manual key deployment for maximum security
 
 **Access Levels:**
 1. **Admin**: Full secret access, user management
@@ -136,7 +139,7 @@ graph TB
 |-------|-----------|------------|
 | Deployment fails | `--debug` flag | [Clan Workflows](CLAN-WORKFLOWS.md) |
 | Linting errors | `pre-commit run --all-files` | [Linting Reference](LINTING.md) |
-| Secret access denied | Check age keys | [Security Guide](SECURITY.md) |
+| Secret access denied | Check `/var/lib/sops-nix/key.txt` | [Key Distribution](KEY_DISTRIBUTION.md) |
 | Machine unreachable | SSH connectivity test | [Migration Guide](MIGRATION-GUIDE.md) |
 
 ### Emergency Procedures

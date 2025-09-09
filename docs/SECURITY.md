@@ -12,8 +12,8 @@ We use **Clan's native age-encrypted secret management** instead of standalone s
 
 ```
 sops/
-├── users/w3max/key.json          # Admin user age key
-├── machines/                     # Machine-specific age keys
+├── users/w3max/key.json          # Admin user public age key
+├── machines/                     # Machine-specific public age keys
 │   ├── desktop/key.json
 │   ├── laptop/key.json
 │   ├── vm/key.json
@@ -24,13 +24,15 @@ sops/
 │   ├── wireguard-keys.yaml
 │   └── api-tokens.yaml
 └── .sops.yaml                    # SOPS configuration
+
+/var/lib/sops-nix/key.txt         # Private key location on each machine (NOT in repo)
 ```
 
 ### Key Components
 
 1. **Age Encryption**: Uses modern age encryption with per-machine keys
 2. **Machine-Specific Access**: Each machine has its own decryption key
-3. **Automatic Deployment**: Keys deployed via `/etc/machine-age-key`
+3. **Secure Key Storage**: Private keys stored at `/var/lib/sops-nix/key.txt` on each machine
 4. **Clan Integration**: Managed through Clan commands, not manual sops
 
 ### Available Secrets
@@ -90,11 +92,17 @@ config.sops.secrets.github-token.path
 - **Automatic Key Deployment**: Keys deployed securely via Nix build
 - **Access Control**: User and machine-level permissions
 
-## Key Backup
+## Key Management
 
-⚠️ **Critical**: Backup your age private key from `~/.config/sops/age/keys.txt`
+### Private Key Deployment
 
-Without this key, you'll lose access to all secrets.
+Private keys must be manually deployed to each machine. See [KEY_DISTRIBUTION.md](./KEY_DISTRIBUTION.md) for detailed instructions.
+
+⚠️ **Critical**:
+- Private keys are **NOT** stored in the repository
+- Each machine's private key must be placed at `/var/lib/sops-nix/key.txt`
+- Keep secure backups of all private keys
+- Without these keys, you'll lose access to all secrets
 
 ## Integration with Applications
 

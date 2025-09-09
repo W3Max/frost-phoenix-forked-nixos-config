@@ -9,7 +9,9 @@
       "WebFetch(domain:docs.clan.lol)",
       "Bash(nix develop -c pre-commit run:*)",
       "Bash(nix develop:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(cat:*)",
+      "Bash(age-keygen:*)"
     ],
     "deny": [],
     "ask": []
