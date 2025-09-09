@@ -1,14 +1,25 @@
 ---
 keys:
-  # Admin key
+  # Admin key (w3max user)
   - &w3max age1drplmvrk3sd89e8gedxenyt3dwtrefcv0mcuvl3xy0qv3ugrzcfqna6xzf
   # Machine keys
   - &desktop age1ll33dvms7wzvzhu9na50d9gawwtctr766mcndmdh3kxy8qqvmvxqeqjqw5
   - &workstation age1220h0yey8y6g8esf73fccpw0qwtmh43005ewl5dkjwf3ct2y25xsnwm3x2
 
 creation_rules:
-  - path_regex: .*
+  # User password - accessible by all machines + admin
+  - path_regex: secrets/user-password\.yaml$
     age: >-
       age1drplmvrk3sd89e8gedxenyt3dwtrefcv0mcuvl3xy0qv3ugrzcfqna6xzf,
       age1ll33dvms7wzvzhu9na50d9gawwtctr766mcndmdh3kxy8qqvmvxqeqjqw5,
       age1220h0yey8y6g8esf73fccpw0qwtmh43005ewl5dkjwf3ct2y25xsnwm3x2
+
+  # SSH host keys - desktop only for now
+  - path_regex: secrets/ssh-host-keys\.yaml$
+    age: >-
+      age1drplmvrk3sd89e8gedxenyt3dwtrefcv0mcuvl3xy0qv3ugrzcfqna6xzf,
+      age1ll33dvms7wzvzhu9na50d9gawwtctr766mcndmdh3kxy8qqvmvxqeqjqw5
+
+  # Default rule - admin access only
+  - path_regex: .*
+    age: age1drplmvrk3sd89e8gedxenyt3dwtrefcv0mcuvl3xy0qv3ugrzcfqna6xzf
