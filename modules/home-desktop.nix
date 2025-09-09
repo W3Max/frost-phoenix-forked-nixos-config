@@ -8,7 +8,6 @@
     ./home/gnome.nix
     ./home/gtk.nix
     ./home/hyprland
-    ./home/kitty.nix
     ./home/nemo.nix
     ./home/rofi.nix
     ./home/swaylock.nix
