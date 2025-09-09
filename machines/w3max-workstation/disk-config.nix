@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{ ... }: {
   disko.devices = {
     disk = {
       # Kingston KC3000 2TB - Primary System Drive
