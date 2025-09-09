@@ -29,16 +29,17 @@ confirm() {
 
 print_header() {
     echo -E "$CYAN
-      _____              _   ____  _                      _        
-     |  ___| __ ___  ___| |_|  _ \| |__   ___   ___ _ __ (_)_  __  
-     | |_ | '__/ _ \/ __| __| |_) | '_ \ / _ \ / _ \ '_ \| \ \/ /  
-     |  _|| | | (_) \__ \ |_|  __/| | | | (_) |  __/ | | | |>  <   
-     |_|  |_|  \___/|___/\__|_|   |_| |_|\___/ \___|_| |_|_/_/\_\  
-     _   _ _       ___        ___           _        _ _           
-    | \ | (_)_  __/ _ \ ___  |_ _|_ __  ___| |_ __ _| | | ___ _ __ 
-    |  \| | \ \/ / | | / __|  | || '_ \/ __| __/ _' | | |/ _ \ '__|
-    | |\  | |>  <| |_| \__ \  | || | | \__ \ || (_| | | |  __/ |   
-    |_| \_|_/_/\_\\\\___/|___/ |___|_| |_|___/\__\__,_|_|_|\___|_| 
+    __        _____ __  __                _   _ _       ___  ____  
+    \ \      / /__ _|  \/  | __ ___  __  | \ | (_)_  __/ _ \/ ___| 
+     \ \ /\ / /  _| | |\/| |/ _\` \ \/ /   |  \| | \ \/ / | | \___ \ 
+      \ V  V /  _| || |  | | (_| |>  <    | |\  | |>  <| |_| |___) |
+       \_/\_/  |___|_|  |_|\__,_/_/\_\   |_| \_|_/_/\_\\\\___/|____/ 
+                                                                     
+        ___           _        _ _                                   
+       |_ _|_ __  ___| |_ __ _| | | ___ _ __                         
+        | || '_ \/ __| __/ _\` | | |/ _ \ '__|                        
+        | || | | \__ \ || (_| | | |  __/ |                           
+       |___|_| |_|___/\__\__,_|_|_|\___|_|                           
 
 
                   $BLUE https://github.com/w3max $RED 
@@ -82,17 +83,6 @@ get_host() {
     confirm
 }
 
-aseprite() {
-    # whether to install aseprite or not
-    echo -en "Disable ${GREEN}Aseprite${NORMAL} (faster install) ? [${GREEN}y${NORMAL}/${RED}n${NORMAL}]: "
-    read -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        return
-    fi
-    sed -i '3s/  /  # /' modules/home/aseprite/aseprite.nix
-}
-
 install() {
     echo -e "\n${RED}START INSTALL PHASE${NORMAL}\n"
 
@@ -112,8 +102,8 @@ install() {
     cp -r wallpapers/otherWallpaper/nixos/* ~/Pictures/wallpapers/others/
 
     # Get the hardware configuration
-    echo -e "Copying ${MAGENTA}/etc/nixos/hardware-configuration.nix${NORMAL} to ${MAGENTA}./hosts/${HOST}/${NORMAL}\n"
-    cp /etc/nixos/hardware-configuration.nix hosts/${HOST}/hardware-configuration.nix
+    echo -e "Copying ${MAGENTA}/etc/nixos/hardware-configuration.nix${NORMAL} to ${MAGENTA}./machines/${HOST}/${NORMAL}\n"
+    cp /etc/nixos/hardware-configuration.nix machines/${HOST}/hardware-configuration.nix
 
     # Last Confirmation
     echo -en "You are about to start the system build, do you want to process ? "
@@ -133,7 +123,6 @@ main() {
     set_username
     get_host
 
-    aseprite
     install
 }
 

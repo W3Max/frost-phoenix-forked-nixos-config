@@ -296,7 +296,6 @@ in
         "float,class:^(Viewnior)$"
         "float,class:^(imv)$"
         "float,class:^(mpv)$"
-        "tile,class:^(Aseprite)$"
         "float,class:^(Audacious)$"
         "pin,class:^(rofi)$"
         "pin,class:^(waypaper)$"
@@ -314,13 +313,10 @@ in
         "pin, title:^(Picture-in-Picture)$"
         "opacity 1.0 override 1.0 override, title:^(.*imv.*)$"
         "opacity 1.0 override 1.0 override, title:^(.*mpv.*)$"
-        "opacity 1.0 override 1.0 override, class:(Aseprite)"
-        "opacity 1.0 override 1.0 override, class:(Unity)"
         "opacity 1.0 override 1.0 override, class:(zen)"
         "opacity 1.0 override 1.0 override, class:(evince)"
         "workspace 1, class:^(${browser})$"
         "workspace 3, class:^(evince)$"
-        "workspace 4, class:^(Aseprite)$"
         "workspace 5, class:^(Audacious)$"
         "workspace 5, class:^(Spotify)$"
         "workspace 8, class:^(com.obsproject.Studio)$"
@@ -380,10 +376,8 @@ in
         "f[1], gapsout:0, gapsin:0"
       ];
 
-      monitor = [
-        "HDMI-A-2,2560x1440@165.08Hz,0x0,1"
-        "DP-1,1920x1080@60.00Hz,2560x0,1"
-      ];
+      # Monitor configuration is now defined at the host level
+      # See machines/*/hyprland.nix for machine-specific monitor settings
 
       xwayland = {
         force_zero_scaling = true;

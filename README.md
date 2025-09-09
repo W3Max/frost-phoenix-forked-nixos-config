@@ -63,20 +63,78 @@ Catppuccin (EXPAND)
 
 # 🗃️ Overview
 
+## ⚡ New Features
+
+This configuration now supports advanced deployment and infrastructure
+management:
+
+### 🏗️ **Clan Framework Integration**
+
+- **Multi-machine management**: Easily deploy and manage multiple NixOS systems
+- **Remote deployment**: Deploy configurations to remote machines over SSH
+- **Service orchestration**: Coordinate services across multiple machines
+- **Infrastructure as code**: Manage your entire infrastructure declaratively
+
+### 💾 **Declarative Disk Management (Disko)**
+
+- **Automated partitioning**: Define disk layouts in Nix configuration
+- **Reproducible storage**: Consistent disk setup across machines
+- **ZFS/Btrfs support**: Advanced filesystems with snapshots and compression
+- **RAID configurations**: Declarative software RAID setup
+
+### 🚀 **Remote Installation (nixos-anywhere)**
+
+- **Over-the-air installs**: Install NixOS remotely via SSH
+- **Rescue system**: Transform any Linux system into NixOS
+- **Zero-touch deployment**: Automated installation without physical access
+- **Custom disk layouts**: Apply disko configurations during remote installs
+
+### 🎯 **Semantic Module Organization**
+
+- **Purpose-based grouping**: Modules organized by function (common, desktop,
+  development, gaming)
+- **Machine-specific configs**: Host-specific settings (monitor layouts,
+  hardware optimizations)
+- **Flexible subscription**: Machines can subscribe to different feature sets
+- **Clean separation**: Clear distinction between system and user configurations
+
 ## 📚 Layout
 
-- [flake.nix](flake.nix) base of the configuration
+- [flake.nix](flake.nix) base of the configuration with
+  clan/disko/nixos-anywhere inputs
+- [nix/](nix/) 🔧 flake organization using flake-parts
+  - [machines.nix](nix/machines.nix) 🏗️ all machine definitions with module
+    subscriptions
+  - [clan.nix](nix/clan.nix) 👥 clan framework configuration and machine
+    metadata
 - [hosts](hosts) 🌳 per-host configurations that contain machine specific
-  configurations
-  - [desktop](hosts/desktop/) 🖥️ Desktop specific configuration
-  - [laptop](hosts/laptop/) 💻 Laptop specific configuration
+  settings
+  - [desktop](hosts/desktop/) 🖥️ Desktop specific configuration + hyprland
+    monitors
+  - [laptop](hosts/laptop/) 💻 Laptop specific configuration + power management
   - [vm](hosts/vm/) 🗄️ VM specific configuration
-- [modules](modules) 🍱 modularized NixOS configurations
-  - [core](modules/core/) ⚙️ Core NixOS configuration
-  - [homes](modules/home/) 🏠 my
-    [Home-Manager](https://github.com/nix-community/home-manager) config
-- [pkgs](flake/pkgs) 📦 Packages Build from source
+  - [w3max-workstation](hosts/w3max-workstation/) 🎮 High-end AMD gaming/dev
+    workstation with disko config
+- [modules](modules) 🍱 semantic modularized NixOS configurations
+  - [common.nix](modules/common.nix) ⚙️ Essential system configuration (all
+    machines)
+  - [desktop.nix](modules/desktop.nix) 🖥️ Desktop environment configuration
+  - [development.nix](modules/development.nix) 👨‍💻 Development tools and
+    virtualization
+  - [gaming.nix](modules/gaming.nix) 🎮 Gaming configuration (Steam, etc.)
+  - [home-*.nix](modules/) 🏠 Home-manager module groups
+  - [core/](modules/core/) ⚙️ Individual NixOS modules
+  - [home/](modules/home/) 🏠 Individual home-manager modules
 - [wallpapers](wallpapers/) 🌄 wallpapers collection
+
+### 🏠 Machine Configurations
+
+| Machine               | System Modules                          | Home Modules          | Description                                |
+| --------------------- | --------------------------------------- | --------------------- | ------------------------------------------ |
+| **desktop**           | common + desktop + development + gaming | all home modules      | Full-featured desktop setup                |
+| **laptop**            | common + desktop + development          | desktop + development | Mobile development machine                 |
+| **vm**                | common + desktop                        | basic desktop         | Minimal testing environment                |
+| **w3max-workstation** | common + desktop + development + gaming | all home modules      | High-end AMD gaming/dev station with disko |
 
 ## 📓 Components
 
@@ -402,6 +460,8 @@ Keybindings
 
 # 🚀 Installation
 
+## 📦 Traditional Installation
+
 > [!CAUTION]
 > Applying custom configurations, especially those related to your operating
 > system, can have unexpected consequences and may interfere with your system's
@@ -456,13 +516,74 @@ Execute and follow the installation script :
 After rebooting, the config should be applied, you'll be greeted by hyprlock
 prompting for your password.
 
+## 🚀 Remote Installation with nixos-anywhere
+
+For remote installations on fresh machines or VMs:
+
+#### 1. **Prepare target machine**
+
+- Boot target machine with any Linux live system
+- Ensure SSH access to the target machine
+- Target machine should have internet connectivity
+
+#### 2. **Configure disk layout (optional)**
+
+- Edit or create `hosts/your-machine/disk-config.nix`
+- See `hosts/w3max-workstation/disk-config.nix` for a comprehensive example
+- Supports complex setups: multiple drives, Btrfs subvolumes, ZFS, RAID
+
+#### 3. **Deploy remotely**
+
+```bash
+# Install to a remote machine
+nix run github:nix-community/nixos-anywhere -- \
+  --flake .#your-machine-name \
+  root@target-machine-ip
+
+# Example: Install w3max-workstation
+nix run github:nix-community/nixos-anywhere -- \
+  --flake .#w3max-workstation \
+  root@192.168.1.100
+```
+
+This will:
+
+- Partition disks according to your disko configuration
+- Install NixOS with your complete configuration
+- Automatically reboot into your configured system
+
+## 🏗️ Clan Management
+
+For managing multiple machines with Clan:
+
+#### 1. **List available machines**
+
+```bash
+nix run github:clan-lol/clan-core -- machines list
+```
+
+#### 2. **Deploy to specific machines**
+
+```bash
+# Deploy configuration updates
+nix run github:clan-lol/clan-core -- machines deploy your-machine-name
+
+# Deploy all machines
+nix run github:clan-lol/clan-core -- machines deploy
+```
+
+#### 3. **Available machines in this config**
+
+- `desktop` - Full-featured desktop setup
+- `laptop` - Mobile development machine
+- `vm` - Minimal testing environment
+- `w3max-workstation` - High-end AMD gaming/dev station
+
 #### 5. **Manual config**
 
 Even though I use home manager, there is still a little bit of manual
 configuration to do:
 
-- Set Aseprite theme (they are in the folder
-  `./nixos-config/modules/home/aseprite/themes`).
 - Configure the browser (for now, all browser configuration is done manually).
 - Change the git account information in `./modules/home/git.nix`
 
@@ -505,54 +626,24 @@ the folder in which the `wallpaper-picker.sh` script will be looking for them.
 
 It will also automatically copy the hardware configuration from
 `/etc/nixos/hardware-configuration.nix` to
-`./hosts/${host}/hardware-configuration.nix` so that the hardware configuration
-used is yours and not the default one.
+`./machines/${host}/hardware-configuration.nix` so that the hardware
+configuration used is yours and not the default one.
 
-#### 6. Choose a host (desktop / laptop)
+#### 6. Choose a machine (desktop / laptop)
 
-Now you will need to choose the host you want. It depend on whether you are
+Now you will need to choose the machine you want. It depend on whether you are
 using a desktop or laptop (or a VM altho it can be really buggy).
 
-#### 7. Choose whether to install aseprite or not
-
-To reduce installation time, you can choose to skip installing Aseprite. The
-installation process for Aseprite is time-intensive as it requires compiling
-over 1100 C++ files from source.
-
-#### 8. Build the system
+#### 7. Build the system
 
 Lastly, it will build the system, which includes both the flake config and
 home-manager config.
 
 # 👥 Credits
 
-Other dotfiles that I learned / copy from:
-
-- Nix Flakes
-  - [nomadics9/NixOS-Flake](https://github.com/nomadics9/NixOS-Flake): This is
-    where I start my nixos / hyprland journey.
-  - [samiulbasirfahim/Flakes](https://github.com/samiulbasirfahim/Flakes):
-    General flake / files structure
-  - [justinlime/dotfiles](https://github.com/justinlime/dotfiles): Mainly waybar
-    (old design)
-  - [skiletro/nixfiles](https://github.com/skiletro/nixfiles): Vscodium config
-    (that prevent it to crash)
-  - [fufexan/dotfiles](https://github.com/fufexan/dotfiles)
-  - [tluijken/.dotfiles](https://github.com/tluijken/.dotfiles): base rofi
-    config
-  - [mrh/dotfiles](https://codeberg.org/mrh/dotfiles): base waybar config
-
-- README
-  - [ryan4yin/nix-config](https://github.com/ryan4yin/nix-config)
-  - [NotAShelf/nyx](https://github.com/NotAShelf/nyx)
-  - [sioodmy/dotfiles](https://github.com/sioodmy/dotfiles)
-  - [Ruixi-rebirth/flakes](https://github.com/Ruixi-rebirth/flakes)
-
-<!-- # ✨ Stars History -->
-
-<!-- <p align="center"><img src="https://api.star-history.com/svg?repos=w3max/nixos-config&type=Timeline&theme=dark" /></p> -->
-
-<p align="center"><img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" /></p>
+- Forked From
+  - [Frost-Phoenix/nixos-config](https://github.com/nomadics9/NixOS-Flake): This
+    is where I started my NixOS / Hyprland journey.
 
 <!-- end of page, send back to the top -->
 

@@ -3,6 +3,34 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    
+    # Clan framework for multi-machine management
+    clan-core = {
+      url = "git+https://git.clan.lol/clan/clan-core";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
+    
+    # Declarative disk partitioning
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    # Remote NixOS installation
+    nixos-anywhere = {
+      url = "github:nix-community/nixos-anywhere";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.disko.follows = "disko";
+    };
+    
+    # Hardware-specific optimizations
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -51,46 +79,19 @@
     ghostty.url = "github:ghostty-org/ghostty";
   };
 
-  outputs =
-    { nixpkgs, self, ... }@inputs:
-    let
-      username = "w3max";
-      system = "x86_64-linux";
-      # pkgs = import nixpkgs {
-      #   inherit system;
-      #   config.allowUnfree = true;
-      #   config.permittedInsecurePackages = [
-      #     "ventoy-1.1.05"
-      #   ];
-      # };
-      # lib = nixpkgs.lib;
-    in
-    {
-      nixosConfigurations = {
-        desktop = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [ ./hosts/desktop ];
-          specialArgs = {
-            host = "desktop";
-            inherit self inputs username;
-          };
-        };
-        laptop = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [ ./hosts/laptop ];
-          specialArgs = {
-            host = "laptop";
-            inherit self inputs username;
-          };
-        };
-        vm = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [ ./hosts/vm ];
-          specialArgs = {
-            host = "vm";
-            inherit self inputs username;
-          };
-        };
+  outputs = inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, ... }: {
+      imports = [
+        ./nix/machines.nix      # Machine configurations
+        ./nix/clan.nix          # Clan-specific setup
+      ];
+      
+      systems = [
+        "x86_64-linux"
+      ];
+      
+      perSystem = { config, self', inputs', pkgs, system, ... }: {
+        formatter = pkgs.nixpkgs-fmt;
       };
-    };
+    });
 }

@@ -1,0 +1,14 @@
+# Common configuration shared across all machines
+{ ... }:
+{
+  imports = [
+    # Essential system modules
+    ./core/bootloader.nix
+    ./core/hardware.nix
+    ./core/network.nix
+    ./core/security.nix
+    ./core/system.nix
+    ./core/user.nix
+    ./core/program.nix
+  ];
+}
