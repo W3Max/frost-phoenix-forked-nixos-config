@@ -8,7 +8,8 @@
       "Bash(nix run github:clan-lol/clan-core:*)",
       "WebFetch(domain:docs.clan.lol)",
       "Bash(nix develop -c pre-commit run:*)",
-      "Bash(nix develop:*)"
+      "Bash(nix develop:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
