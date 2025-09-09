@@ -1,4 +1,4 @@
-{ pkgs, inputs, username, host, ... }: {
+{ config, pkgs, inputs, username, host, ... }: {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
     useUserPackages = true;
@@ -37,6 +37,7 @@
     description = "${username}";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
+    hashedPasswordFile = config.sops.secrets.user-password.path;
   };
   nix.settings.allowed-users = [ "${username}" ];
 }

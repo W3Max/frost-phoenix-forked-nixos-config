@@ -640,29 +640,46 @@ nix run github:clan-lol/clan-core -- machines deploy w3max-workstation
 nix run github:clan-lol/clan-core -- services enable zerotier
 ```
 
----
+## 🔧 **Development & Management**
 
-## 📚 Documentation
+### **Pre-commit Hooks**
+```bash
+# Enter development shell
+nix develop
 
-### Infrastructure Management
+# Run all hooks manually
+nix develop -c pre-commit run --all-files
 
-- **[Clan Workflows Guide](docs/CLAN-WORKFLOWS.md)** - Daily operations and
-  advanced Clan workflows
-- **[Migration Guide](docs/MIGRATION-GUIDE.md)** - Transitioning from
-  nixos-anywhere to Clan management
-- **[Clan Management](docs/CLAN-MANAGEMENT.md)** - Complete Clan framework
-  reference
+# Quick format
+nix fmt
+```
 
-### Security & Development
+### **Secret Management**
+- **Age encryption** with per-machine access control
+- **Admin key**: `~/nixos-private-keys-new/w3max.key`
+- **Machine keys**: Deploy to `/var/lib/sops-nix/key.txt` on each machine
 
-- **[Security Guide](docs/SECURITY.md)** - Secret management with SOPS + Age
-  encryption
-- **[Key Distribution](docs/KEY_DISTRIBUTION.md)** - How to deploy private keys
-  to machines
-- **[Development Workflow](docs/DEVELOPMENT.md)** - Pre-commit hooks, linting,
-  and code quality
-- **[Linting Reference](docs/LINTING.md)** - Fast linting commands and hook
-  configuration
+```bash
+# Deploy private key to machine
+sudo cp ~/nixos-private-keys-new/[machine].key /var/lib/sops-nix/key.txt
+sudo chmod 600 /var/lib/sops-nix/key.txt
+sudo chown root:root /var/lib/sops-nix/key.txt
+
+# Manage secrets
+nix run github:clan-lol/clan-core -- secrets list
+nix run github:clan-lol/clan-core -- secrets set new-secret
+```
+
+### **Clan Operations**
+```bash
+# Deploy configuration
+nix run github:clan-lol/clan-core -- machines deploy [machine]
+nix run github:clan-lol/clan-core -- machines deploy --update-all
+
+# Monitoring
+nix run github:clan-lol/clan-core -- machines status
+nix run github:clan-lol/clan-core -- machines list
+```
 
 ---
 

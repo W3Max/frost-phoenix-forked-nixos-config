@@ -104,14 +104,6 @@
 
   # Services
   services = {
-    # SSH for remote management
-    openssh = {
-      enable = true;
-      settings = {
-        PasswordAuthentication = false;
-        PermitRootLogin = "prohibit-password";
-      };
-    };
 
     # Btrfs maintenance
     btrfs.autoScrub = {

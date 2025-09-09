@@ -8,6 +8,7 @@
     ./core/network.nix
     ./core/secrets.nix
     ./core/security.nix
+    ./core/ssh.nix
     ./core/system.nix
     ./core/user.nix
     ./core/program.nix

@@ -15,15 +15,7 @@
         neededForUsers = true;
       };
 
-      # SSH host key secret - for SSH server
-      ssh-host-key = {
-        sopsFile = ../../sops/secrets/ssh-host-keys.yaml;
-        key = "ssh_host_key_ed25519";
-        mode = "0600";
-        owner = "root";
-        group = "root";
-        path = "/etc/ssh/ssh_host_ed25519_key";
-      };
+      # Additional secrets can be added here as needed
     };
   };
 }
