@@ -1,12 +1,14 @@
 # Clan Management Workflows
 
-This guide covers common workflows for managing your NixOS infrastructure with Clan after initial deployment.
+This guide covers common workflows for managing your NixOS infrastructure with
+Clan after initial deployment.
 
 ## 🚀 Common Workflows
 
 ### Daily Operations
 
 #### Configuration Updates
+
 ```bash
 # Update a single machine
 nix run github:clan-lol/clan-core -- machines deploy w3max-workstation
@@ -19,6 +21,7 @@ nix run github:clan-lol/clan-core -- machines deploy --update-all
 ```
 
 #### System Monitoring
+
 ```bash
 # Check status of all machines
 nix run github:clan-lol/clan-core -- machines status
@@ -33,16 +36,18 @@ nix run github:clan-lol/clan-core -- machines show w3max-workstation
 ### Multi-Machine Coordination
 
 #### Setting Up Machine Mesh
+
 ```bash
 # Add machines to mesh network
-nix run github:clan-lol/clan-core -- machines add-peer desktop laptop
-nix run github:clan-lol/clan-core -- machines add-peer w3max-workstation vm
+nix run github:clan-lol/clan-core -- machines add-peer desktop
+nix run github:clan-lol/clan-core -- machines add-peer w3max-workstation
 
 # Verify mesh connectivity
 nix run github:clan-lol/clan-core -- machines ping desktop
 ```
 
 #### Service Management
+
 ```bash
 # List available services
 nix run github:clan-lol/clan-core -- services list
@@ -58,18 +63,17 @@ nix run github:clan-lol/clan-core -- services status
 ### Development Workflows
 
 #### Testing Configuration Changes
+
 ```bash
 # Test changes without applying
 nix run github:clan-lol/clan-core -- machines deploy w3max-workstation --dry-run
-
-# Deploy to test VM first
-nix run github:clan-lol/clan-core -- machines deploy vm
 
 # Then deploy to production systems
 nix run github:clan-lol/clan-core -- machines deploy w3max-workstation
 ```
 
 #### Rollback Support
+
 ```bash
 # List previous generations
 nix run github:clan-lol/clan-core -- machines history w3max-workstation
@@ -86,6 +90,7 @@ nix run github:clan-lol/clan-core -- machines rollback w3max-workstation --gener
 ### Backup and Recovery
 
 #### Automated Backups
+
 ```bash
 # Enable backup service
 nix run github:clan-lol/clan-core -- services enable borgbackup
@@ -98,6 +103,7 @@ nix run github:clan-lol/clan-core -- services run backup-sync
 ```
 
 #### Disaster Recovery
+
 ```bash
 # Bootstrap replacement machine
 ./scripts/deploy.sh <new-machine-ip>
@@ -112,6 +118,7 @@ nix run github:clan-lol/clan-core -- machines add-peer <machine-name>
 ### Secret Management
 
 #### Managing Secrets
+
 ```bash
 # List all secrets
 nix run github:clan-lol/clan-core -- secrets list
@@ -130,6 +137,7 @@ nix run github:clan-lol/clan-core -- secrets remove old-secret
 ```
 
 #### User & Machine Access
+
 ```bash
 # Add user with age key
 nix run github:clan-lol/clan-core -- secrets users add alice --age-key <age-public-key>
@@ -145,7 +153,9 @@ nix run github:clan-lol/clan-core -- secrets machines add-secret desktop my-secr
 ```
 
 #### Secret Integration
+
 Current secrets available in configurations:
+
 - `user-password` - User account passwords
 - `ssh-host-key` - SSH host keys
 - `wireguard-key` - VPN private keys
@@ -157,6 +167,7 @@ Access in NixOS config: `config.sops.secrets.<name>.path`
 ### Performance Monitoring
 
 #### System Metrics
+
 ```bash
 # Enable monitoring stack
 nix run github:clan-lol/clan-core -- services enable monitoring
@@ -171,16 +182,15 @@ nix run github:clan-lol/clan-core -- machines report
 ## 🏗️ Infrastructure Patterns
 
 ### Development Environment
-```bash
-# Development machine setup
-nix run github:clan-lol/clan-core -- machines deploy laptop --profile development
 
+```bash
 # Enable development services
 nix run github:clan-lol/clan-core -- services enable docker
 nix run github:clan-lol/clan-core -- services enable postgres-dev
 ```
 
 ### Gaming Rig Management
+
 ```bash
 # Gaming-optimized deployment
 nix run github:clan-lol/clan-core -- machines deploy w3max-workstation --profile gaming
@@ -190,6 +200,7 @@ nix run github:clan-lol/clan-core -- machines metrics w3max-workstation --filter
 ```
 
 ### Home Lab Setup
+
 ```bash
 # Deploy storage server
 nix run github:clan-lol/clan-core -- machines deploy w3max-workstation --profile storage
@@ -204,6 +215,7 @@ nix run github:clan-lol/clan-core -- services enable jellyfin
 ### Common Issues
 
 #### Connection Problems
+
 ```bash
 # Debug SSH connectivity
 nix run github:clan-lol/clan-core -- machines debug-ssh w3max-workstation
@@ -216,6 +228,7 @@ nix run github:clan-lol/clan-core -- machines status --verbose
 ```
 
 #### Deployment Failures
+
 ```bash
 # Check deployment logs
 nix run github:clan-lol/clan-core -- machines logs w3max-workstation
@@ -230,6 +243,7 @@ nix run github:clan-lol/clan-core -- machines deploy w3max-workstation --rebuild
 ### Recovery Procedures
 
 #### Network Issues
+
 ```bash
 # Reset mesh configuration
 nix run github:clan-lol/clan-core -- machines reset-mesh w3max-workstation
@@ -239,6 +253,7 @@ nix run github:clan-lol/clan-core -- machines join-mesh w3max-workstation
 ```
 
 #### Service Recovery
+
 ```bash
 # Restart failed services
 nix run github:clan-lol/clan-core -- services restart backup-sync
@@ -249,7 +264,6 @@ nix run github:clan-lol/clan-core -- services reset zerotier
 
 ## 📚 Best Practices
 
-1. **Always test on VM first** before deploying to production machines
 2. **Use --dry-run** to preview changes before applying
 3. **Monitor system health** regularly with status checks
 4. **Keep backups** of important secrets and configurations
@@ -259,4 +273,7 @@ nix run github:clan-lol/clan-core -- services reset zerotier
 
 ## 🔗 Integration with nixos-anywhere
 
-Remember: Use `scripts/deploy.sh` (nixos-anywhere) for initial installation, then switch to Clan commands for ongoing management. This dual approach gives you the best of both worlds - reliable bootstrapping and powerful infrastructure management.
+Remember: Use `scripts/deploy.sh` (nixos-anywhere) for initial installation,
+then switch to Clan commands for ongoing management. This dual approach gives
+you the best of both worlds - reliable bootstrapping and powerful infrastructure
+management.

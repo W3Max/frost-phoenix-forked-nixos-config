@@ -5,6 +5,7 @@ This document covers managing your NixOS infrastructure using Clan framework.
 ## Overview
 
 Clan provides unified management for:
+
 - **Multi-machine deployments**
 - **Secret management**
 - **Service orchestration**
@@ -14,12 +15,10 @@ Clan provides unified management for:
 
 ### Available Machines
 
-| Machine | Description | Tags | Modules |
-|---------|-------------|------|---------|
-| `desktop` | Full-featured desktop | desktop | common + desktop + development + gaming |
-| `laptop` | Mobile development | laptop, mobile | common + desktop + development |
-| `vm` | Testing environment | vm, test | common + desktop |
-| `w3max-workstation` | High-end gaming/dev | desktop, gaming, storage | common + desktop + development + gaming |
+| Machine             | Description           | Tags                     | Modules                                 |
+| ------------------- | --------------------- | ------------------------ | --------------------------------------- |
+| `desktop`           | Full-featured desktop | desktop                  | common + desktop + development + gaming |
+| `w3max-workstation` | High-end gaming/dev   | desktop, gaming, storage | common + desktop + development + gaming |
 
 ### Basic Operations
 
@@ -102,6 +101,7 @@ nix run github:clan-lol/clan-core -- secrets remove old-secret
 ### Available Services
 
 Future service integrations planned:
+
 - **Backup Services**: Automated backups with Restic
 - **Monitoring**: Prometheus + Grafana stack
 - **VPN**: WireGuard mesh networking
@@ -137,9 +137,6 @@ nix run github:clan-lol/clan-core -- network show
 ```bash
 # Future: Set up machine mesh
 nix run github:clan-lol/clan-core -- network mesh-setup
-
-# Future: Add peer connection
-nix run github:clan-lol/clan-core -- machines add-peer desktop laptop
 ```
 
 ## Deployment Strategies
@@ -168,7 +165,7 @@ nix run github:clan-lol/clan-core -- machines deploy --update-all
 nix run github:clan-lol/clan-core -- machines deploy critical-machine
 
 # Coordination across machines
-nix run github:clan-lol/clan-core -- machines deploy desktop laptop vm
+nix run github:clan-lol/clan-core -- machines deploy desktop w3max-workstation
 ```
 
 ## Configuration Management
@@ -248,18 +245,20 @@ nix run github:clan-lol/clan-core -- secrets test desktop
 ## Best Practices
 
 ### Security
+
 - **Rotate secrets regularly** using clan commands
 - **Backup age keys** before major changes
 - **Use least privilege** - only grant necessary secret access
 - **Test deployments** on non-critical machines first
 
 ### Operations
-- **Update in stages**: Test on VM, then laptop, then desktop
+
 - **Monitor deployments**: Check health after each deployment
 - **Keep inventory current**: Update descriptions and tags
 - **Document changes**: Update configuration comments
 
 ### Recovery
+
 - **Keep offline backups** of age keys
 - **Document emergency procedures** for each machine type
 - **Test recovery procedures** regularly
@@ -268,15 +267,18 @@ nix run github:clan-lol/clan-core -- secrets test desktop
 ## Integration with Other Tools
 
 ### With nixos-anywhere
+
 - Use for initial installations
 - Transition to clan for ongoing management
 
 ### With Home Manager
+
 - Clan manages system-level secrets
 - Home Manager handles user-specific configurations
 - Both coordinate through the flake structure
 
 ### With Development Workflow
+
 - Use clan commands in development shell
 - Integrate with pre-commit hooks for validation
 - Coordinate with the existing build and test processes

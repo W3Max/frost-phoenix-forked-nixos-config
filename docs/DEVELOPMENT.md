@@ -1,25 +1,27 @@
 # Development Workflow
 
-This document covers the development tools and workflows for maintaining this NixOS configuration.
+This document covers the development tools and workflows for maintaining this
+NixOS configuration.
 
 ## Pre-commit Hooks & Code Quality
 
 ### Overview
 
-We use comprehensive pre-commit hooks to ensure code quality, security, and consistency across the entire codebase.
+We use comprehensive pre-commit hooks to ensure code quality, security, and
+consistency across the entire codebase.
 
 ### Installed Hooks
 
-| Hook | Purpose | Auto-Fix | Speed |
-|------|---------|----------|-------|
-| `nixfmt-classic` | Nix code formatting | ✅ | Fast |
-| `nix-flake-check` | Flake validation & build | ❌ | Slow |
-| `shellcheck` | Shell script linting | ❌ | Fast |
-| `yamllint` | YAML validation | ❌ | Fast |
-| `check-merge-conflicts` | Git conflict detection | ❌ | Fast |
-| `check-symlinks` | Broken symlink detection | ❌ | Fast |
-| `trim-trailing-whitespace` | Remove trailing spaces | ✅ | Fast |
-| `end-of-file-fixer` | Ensure files end with newline | ✅ | Fast |
+| Hook                       | Purpose                       | Auto-Fix | Speed |
+| -------------------------- | ----------------------------- | -------- | ----- |
+| `nixfmt-classic`           | Nix code formatting           | ✅       | Fast  |
+| `nix-flake-check`          | Flake validation & build      | ❌       | Slow  |
+| `shellcheck`               | Shell script linting          | ❌       | Fast  |
+| `yamllint`                 | YAML validation               | ❌       | Fast  |
+| `check-merge-conflicts`    | Git conflict detection        | ❌       | Fast  |
+| `check-symlinks`           | Broken symlink detection      | ❌       | Fast  |
+| `trim-trailing-whitespace` | Remove trailing spaces        | ✅       | Fast  |
+| `end-of-file-fixer`        | Ensure files end with newline | ✅       | Fast  |
 
 ### Quick Commands
 
@@ -45,6 +47,7 @@ git commit --no-verify -m "emergency fix"
 ### Development Shell
 
 The development shell includes:
+
 - `nixfmt-classic` - Nix formatter
 - `nix` - Nix package manager
 - `git` - Version control
@@ -61,11 +64,13 @@ nix develop
 ### Performance Tips
 
 **Fastest workflow:**
+
 1. `nix develop` (one time)
 2. `pre-commit run <specific-hook>` (as needed)
 3. `pre-commit run --all-files` (before commits)
 
 **Avoid:**
+
 - `nix flake check` for routine linting (very slow)
 - Running all hooks when only specific files changed
 
@@ -74,6 +79,7 @@ nix develop
 ### Standards Enforced
 
 All shell scripts now pass `shellcheck` with these improvements:
+
 - Proper variable quoting: `"$variable"` instead of `$variable`
 - Modern command usage: `pgrep` instead of `ps | grep`
 - Eliminated unused variables and functions
@@ -83,6 +89,7 @@ All shell scripts now pass `shellcheck` with these improvements:
 ### Excluded Files
 
 These files are excluded from shellcheck for valid reasons:
+
 - `modules/home/p10k/.p10k.zsh` - Powerlevel10k config uses zsh-specific syntax
 
 ### Script Categories
@@ -119,12 +126,11 @@ modules/
 ```
 machines/
 ├── desktop/                # Desktop workstation
-├── laptop/                 # Mobile development
-├── vm/                     # Testing environment
 └── w3max-workstation/      # High-end gaming/dev station
 ```
 
 Each machine:
+
 - Imports appropriate module groups
 - Has machine-specific settings
 - Deploys its secret decryption key
@@ -147,13 +153,9 @@ pre-commit run nixfmt-classic --all-files
 
 ### Deployment Testing
 
-```bash
+````bash
 # Test deployment without applying
 nixos-rebuild dry-build --flake .#hostname
-
-# Test in VM
-nixos-rebuild build-vm --flake .#hostname
-```
 
 ### Secret Testing
 
@@ -163,7 +165,7 @@ nix run github:clan-lol/clan-core -- secrets list
 
 # Test secret decryption
 nix run github:clan-lol/clan-core -- secrets get test-secret
-```
+````
 
 ## Contributing Guidelines
 
@@ -178,6 +180,7 @@ nix run github:clan-lol/clan-core -- secrets get test-secret
 ### Common Issues
 
 **Pre-commit hooks failing:**
+
 ```bash
 # Fix formatting issues
 pre-commit run --all-files
@@ -186,6 +189,7 @@ git commit -m "fix formatting"
 ```
 
 **Flake check slow:**
+
 ```bash
 # Use faster alternatives
 pre-commit run --all-files
@@ -194,6 +198,7 @@ nix build .#nixosConfigurations.desktop.config.system.build.toplevel
 ```
 
 **Secret access denied:**
+
 ```bash
 # Verify your admin key
 ls ~/.config/sops/age/keys.txt

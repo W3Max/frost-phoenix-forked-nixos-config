@@ -1,12 +1,14 @@
 # Security & Secret Management
 
-This NixOS configuration implements robust security measures using Clan's built-in secret management system.
+This NixOS configuration implements robust security measures using Clan's
+built-in secret management system.
 
 ## Secret Management with Clan
 
 ### Overview
 
-We use **Clan's native age-encrypted secret management** instead of standalone sops-nix for better integration and unified management.
+We use **Clan's native age-encrypted secret management** instead of standalone
+sops-nix for better integration and unified management.
 
 ### Architecture
 
@@ -15,8 +17,6 @@ sops/
 ├── users/w3max/key.json          # Admin user public age key
 ├── machines/                     # Machine-specific public age keys
 │   ├── desktop/key.json
-│   ├── laptop/key.json
-│   ├── vm/key.json
 │   └── w3max-workstation/key.json
 ├── secrets/                      # Encrypted secret files
 │   ├── user-password.yaml
@@ -32,18 +32,19 @@ sops/
 
 1. **Age Encryption**: Uses modern age encryption with per-machine keys
 2. **Machine-Specific Access**: Each machine has its own decryption key
-3. **Secure Key Storage**: Private keys stored at `/var/lib/sops-nix/key.txt` on each machine
+3. **Secure Key Storage**: Private keys stored at `/var/lib/sops-nix/key.txt` on
+   each machine
 4. **Clan Integration**: Managed through Clan commands, not manual sops
 
 ### Available Secrets
 
-| Secret | File | Purpose |
-|--------|------|---------|
-| `user-password` | `user-password.yaml` | User account passwords |
-| `ssh-host-key` | `ssh-host-keys.yaml` | SSH host keys |
-| `wireguard-key` | `wireguard-keys.yaml` | VPN private keys |
-| `github-token` | `api-tokens.yaml` | GitHub API access |
-| `backup-token` | `api-tokens.yaml` | Backup service credentials |
+| Secret          | File                  | Purpose                    |
+| --------------- | --------------------- | -------------------------- |
+| `user-password` | `user-password.yaml`  | User account passwords     |
+| `ssh-host-key`  | `ssh-host-keys.yaml`  | SSH host keys              |
+| `wireguard-key` | `wireguard-keys.yaml` | VPN private keys           |
+| `github-token`  | `api-tokens.yaml`     | GitHub API access          |
+| `backup-token`  | `api-tokens.yaml`     | Backup service credentials |
 
 ## Usage
 
@@ -96,9 +97,11 @@ config.sops.secrets.github-token.path
 
 ### Private Key Deployment
 
-Private keys must be manually deployed to each machine. See [KEY_DISTRIBUTION.md](./KEY_DISTRIBUTION.md) for detailed instructions.
+Private keys must be manually deployed to each machine. See
+[KEY_DISTRIBUTION.md](./KEY_DISTRIBUTION.md) for detailed instructions.
 
 ⚠️ **Critical**:
+
 - Private keys are **NOT** stored in the repository
 - Each machine's private key must be placed at `/var/lib/sops-nix/key.txt`
 - Keep secure backups of all private keys
@@ -107,6 +110,7 @@ Private keys must be manually deployed to each machine. See [KEY_DISTRIBUTION.md
 ## Integration with Applications
 
 The secret management integrates with:
+
 - SSH daemon (host keys)
 - WireGuard VPN (private keys)
 - User authentication (password hashes)

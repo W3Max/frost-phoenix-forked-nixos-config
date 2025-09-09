@@ -15,16 +15,13 @@
           ./../home-desktop.nix
           ./../home-development.nix
           ./../home-gaming.nix
-        ] else if (host == "laptop") then [
-          ./../home-desktop.nix
-          ./../home-development.nix
         ] else if (host == "w3max-workstation") then [
           ./../home-desktop.nix
           ./../home-development.nix
           ./../home-gaming.nix
         ] else
           [
-            # VM or other machines get basic desktop
+            # other machines get basic desktop
             ./../home-desktop.nix
           ]);
       home.username = "${username}";

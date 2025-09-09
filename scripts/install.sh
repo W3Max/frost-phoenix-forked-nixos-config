@@ -64,12 +64,10 @@ get_host() {
 
     if [[ $REPLY =~ ^[Dd]$ ]]; then
         HOST='desktop'
-    elif [[ $REPLY =~ ^[Ll]$ ]]; then
-        HOST='laptop'
-    elif [[ $REPLY =~ ^[Vv]$ ]]; then
-        HOST='vm'
+    elif [[ $REPLY =~ ^[Ww]$ ]]; then
+        HOST='w3max-workstation'
     else
-        echo "Invalid choice. Please select 'D' for desktop, 'L' for laptop or 'V' for virtual machine."
+        echo "Invalid choice. Please select 'D' for desktop, 'W' for w3max-workstation or 'V' for virtual machine."
         exit 1
     fi
 

@@ -1,22 +1,25 @@
 # Private Key Distribution Guide
 
 ## Overview
-Your NixOS configuration now uses secure secret management with SOPS and AGE encryption.
-Private keys have been removed from the repository and need to be manually deployed to each machine.
+
+Your NixOS configuration now uses secure secret management with SOPS and AGE
+encryption. Private keys have been removed from the repository and need to be
+manually deployed to each machine.
 
 ## Key Locations
 
 ### New Private Keys
+
 Located in: `~/nixos-private-keys-new/`
+
 - `desktop.key` - For desktop machine
-- `laptop.key` - For laptop machine
-- `vm.key` - For VM machine
 - `w3max-workstation.key` - For workstation machine
 - `w3max.key` - Admin key (for manual secret management)
 
 ### Backup of Old Keys
-Located in: `~/nixos-private-keys-backup/`
-(These are the original keys - keep them safe until migration is complete)
+
+Located in: `~/nixos-private-keys-backup/` (These are the original keys - keep
+them safe until migration is complete)
 
 ## Deployment Instructions
 
@@ -65,13 +68,11 @@ Located in: `~/nixos-private-keys-backup/`
 
 ## Machine-Specific Keys
 
-| Machine | Public Key | Private Key Location |
-|---------|------------|---------------------|
-| desktop | age1ll33dvms7wzvzhu9na50d9gawwtctr766mcndmdh3kxy8qqvmvxqeqjqw5 | ~/nixos-private-keys-new/desktop.key |
-| laptop | age1cyz7vmnew6kzx93qzcs8hmdqrgm8fxw2gsjjcgcgwefg4vzth5vsq3fyun | ~/nixos-private-keys-new/laptop.key |
-| vm | age17nmy0n2rgma3mdn7qtdmltcmju6z0c8amnyduuyzjtd85lt2e4cqgfpeqk | ~/nixos-private-keys-new/vm.key |
+| Machine           | Public Key                                                     | Private Key Location                           |
+| ----------------- | -------------------------------------------------------------- | ---------------------------------------------- |
+| desktop           | age1ll33dvms7wzvzhu9na50d9gawwtctr766mcndmdh3kxy8qqvmvxqeqjqw5 | ~/nixos-private-keys-new/desktop.key           |
 | w3max-workstation | age1220h0yey8y6g8esf73fccpw0qwtmh43005ewl5dkjwf3ct2y25xsnwm3x2 | ~/nixos-private-keys-new/w3max-workstation.key |
-| admin (w3max) | age1drplmvrk3sd89e8gedxenyt3dwtrefcv0mcuvl3xy0qv3ugrzcfqna6xzf | ~/nixos-private-keys-new/w3max.key |
+| admin (w3max)     | age1drplmvrk3sd89e8gedxenyt3dwtrefcv0mcuvl3xy0qv3ugrzcfqna6xzf | ~/nixos-private-keys-new/w3max.key             |
 
 ## Security Best Practices
 
@@ -98,9 +99,11 @@ sudo cat /run/secrets/user-password
 ## Troubleshooting
 
 If secrets fail to decrypt:
+
 1. Check key file exists: `ls -la /var/lib/sops-nix/key.txt`
 2. Verify permissions: should be `-rw------- 1 root root`
-3. Check sops can decrypt: `nix-shell -p sops --run "SOPS_AGE_KEY_FILE=/var/lib/sops-nix/key.txt sops -d /path/to/secret.yaml"`
+3. Check sops can decrypt:
+   `nix-shell -p sops --run "SOPS_AGE_KEY_FILE=/var/lib/sops-nix/key.txt sops -d /path/to/secret.yaml"`
 4. Ensure the correct key is deployed for the machine
 
 ## Important Notes

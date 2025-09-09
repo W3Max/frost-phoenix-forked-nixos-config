@@ -1,6 +1,8 @@
 # Documentation Overview
 
-Welcome to the comprehensive documentation for this NixOS configuration! This setup provides enterprise-grade infrastructure management with security, automation, and development excellence.
+Welcome to the comprehensive documentation for this NixOS configuration! This
+setup provides enterprise-grade infrastructure management with security,
+automation, and development excellence.
 
 ## 🚀 Quick Start
 
@@ -13,34 +15,40 @@ Welcome to the comprehensive documentation for this NixOS configuration! This se
 
 ### Infrastructure Management
 
-| Document | Purpose | Audience |
-|----------|---------|----------|
-| [**Clan Workflows**](CLAN-WORKFLOWS.md) | Daily operations, deployment, monitoring | Operators, DevOps |
-| [**Migration Guide**](MIGRATION-GUIDE.md) | nixos-anywhere → Clan transition | System Admins |
-| [**Clan Management**](CLAN-MANAGEMENT.md) | Complete framework reference | Advanced Users |
+| Document                                  | Purpose                                  | Audience          |
+| ----------------------------------------- | ---------------------------------------- | ----------------- |
+| [**Clan Workflows**](CLAN-WORKFLOWS.md)   | Daily operations, deployment, monitoring | Operators, DevOps |
+| [**Migration Guide**](MIGRATION-GUIDE.md) | nixos-anywhere → Clan transition         | System Admins     |
+| [**Clan Management**](CLAN-MANAGEMENT.md) | Complete framework reference             | Advanced Users    |
 
 ### Security & Development
 
-| Document | Purpose | Audience |
-|----------|---------|----------|
-| [**Security Guide**](SECURITY.md) | Secret management, SOPS + Age encryption | Security-focused |
-| [**Key Distribution**](KEY_DISTRIBUTION.md) | Private key deployment to machines | Administrators |
-| [**Development Workflow**](DEVELOPMENT.md) | Code quality, pre-commit hooks | Developers |
-| [**Linting Reference**](LINTING.md) | Fast linting commands | Contributors |
+| Document                                    | Purpose                                  | Audience         |
+| ------------------------------------------- | ---------------------------------------- | ---------------- |
+| [**Security Guide**](SECURITY.md)           | Secret management, SOPS + Age encryption | Security-focused |
+| [**Key Distribution**](KEY_DISTRIBUTION.md) | Private key deployment to machines       | Administrators   |
+| [**Development Workflow**](DEVELOPMENT.md)  | Code quality, pre-commit hooks           | Developers       |
+| [**Linting Reference**](LINTING.md)         | Fast linting commands                    | Contributors     |
 
 ## 🎯 Common Workflows
 
 ### 🏠 Home User
-1. **Getting Started**: [Main README](../README.md) → [Migration Guide](MIGRATION-GUIDE.md)
+
+1. **Getting Started**: [Main README](../README.md) →
+   [Migration Guide](MIGRATION-GUIDE.md)
 2. **Daily Use**: [Clan Workflows](CLAN-WORKFLOWS.md) for updates
 3. **Customization**: [Development Workflow](DEVELOPMENT.md) for modifications
 
 ### 🏢 Infrastructure Admin
-1. **Deployment**: [Migration Guide](MIGRATION-GUIDE.md) → [Clan Management](CLAN-MANAGEMENT.md)
-2. **Security Setup**: [Security Guide](SECURITY.md) → [Key Distribution](KEY_DISTRIBUTION.md)
+
+1. **Deployment**: [Migration Guide](MIGRATION-GUIDE.md) →
+   [Clan Management](CLAN-MANAGEMENT.md)
+2. **Security Setup**: [Security Guide](SECURITY.md) →
+   [Key Distribution](KEY_DISTRIBUTION.md)
 3. **Operations**: [Clan Workflows](CLAN-WORKFLOWS.md) for ongoing management
 
 ### 🛠️ Developer/Contributor
+
 1. **Setup**: [Development Workflow](DEVELOPMENT.md)
 2. **Quality**: [Linting Reference](LINTING.md)
 3. **Advanced Features**: [Clan Management](CLAN-MANAGEMENT.md)
@@ -52,9 +60,7 @@ Welcome to the comprehensive documentation for this NixOS configuration! This se
 ```mermaid
 graph TB
     A[Management Station] --> B[Desktop]
-    A --> C[Laptop]
     A --> D[Workstation]
-    A --> E[VM]
 
     F[Clan Framework] --> A
     G[Secret Management] --> F
@@ -99,12 +105,14 @@ graph TB
 ## 🛡️ Security Model
 
 **Zero Trust Principles:**
+
 - All secrets encrypted with SOPS + Age
 - Per-machine access control with individual keys
 - No plaintext secrets or private keys in repository
 - Manual key deployment for maximum security
 
 **Access Levels:**
+
 1. **Admin**: Full secret access, user management
 2. **Machine**: Specific secret subset per machine
 3. **Service**: Service-specific credentials only
@@ -112,11 +120,13 @@ graph TB
 ## 🚀 Deployment Models
 
 ### Single Machine
+
 - Use nixos-anywhere for bootstrap
 - Switch to Clan for updates
 - Local secret management
 
 ### Multi-Machine Fleet
+
 - Centralized management from admin station
 - Mesh networking between machines
 - Distributed service deployment
@@ -125,6 +135,7 @@ graph TB
 ## 📊 Monitoring & Observability
 
 **Current Status:**
+
 - ✅ Deployment monitoring (Clan status)
 - ✅ Configuration validation (pre-commit)
 - ✅ Secret access control
@@ -135,12 +146,12 @@ graph TB
 
 ### Common Issues
 
-| Issue | Quick Fix | Full Guide |
-|-------|-----------|------------|
-| Deployment fails | `--debug` flag | [Clan Workflows](CLAN-WORKFLOWS.md) |
-| Linting errors | `pre-commit run --all-files` | [Linting Reference](LINTING.md) |
+| Issue                | Quick Fix                         | Full Guide                              |
+| -------------------- | --------------------------------- | --------------------------------------- |
+| Deployment fails     | `--debug` flag                    | [Clan Workflows](CLAN-WORKFLOWS.md)     |
+| Linting errors       | `pre-commit run --all-files`      | [Linting Reference](LINTING.md)         |
 | Secret access denied | Check `/var/lib/sops-nix/key.txt` | [Key Distribution](KEY_DISTRIBUTION.md) |
-| Machine unreachable | SSH connectivity test | [Migration Guide](MIGRATION-GUIDE.md) |
+| Machine unreachable  | SSH connectivity test             | [Migration Guide](MIGRATION-GUIDE.md)   |
 
 ### Emergency Procedures
 
@@ -152,12 +163,14 @@ graph TB
 ## 🎓 Learning Path
 
 ### Beginner → Intermediate
+
 1. Deploy single machine successfully
 2. Understand secret management basics
 3. Use development workflow for customization
 4. Deploy configuration changes confidently
 
 ### Intermediate → Advanced
+
 1. Manage multi-machine fleet
 2. Implement custom services
 3. Set up monitoring and alerting
@@ -166,18 +179,21 @@ graph TB
 ## 📈 Roadmap
 
 **Completed ✅**
+
 - Clan integration with secret management
 - Pre-commit hooks and code quality
 - Comprehensive documentation
 - Multi-machine deployment capability
 
 **In Progress 🚧**
+
 - Advanced service orchestration
 - Monitoring and alerting stack
 - Backup automation
 - Performance optimization
 
 **Planned 🔮**
+
 - GUI management interface
 - Advanced networking features
 - Container orchestration
@@ -194,4 +210,6 @@ graph TB
 
 ---
 
-**Need Help?** Start with the most relevant guide above, or check the troubleshooting sections in each document. This setup is designed to grow with your needs while maintaining security and reliability! 🚀
+**Need Help?** Start with the most relevant guide above, or check the
+troubleshooting sections in each document. This setup is designed to grow with
+your needs while maintaining security and reliability! 🚀

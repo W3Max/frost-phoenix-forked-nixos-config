@@ -1,15 +1,18 @@
 # Migration Guide: nixos-anywhere → Clan Management
 
-This guide walks you through transitioning from initial nixos-anywhere deployment to ongoing Clan-based infrastructure management.
+This guide walks you through transitioning from initial nixos-anywhere
+deployment to ongoing Clan-based infrastructure management.
 
 ## 🎯 Overview
 
 **Migration Path:**
+
 ```
 Fresh Machine → deploy.sh (nixos-anywhere) → Clan Management → Ongoing Operations
 ```
 
 This approach gives you:
+
 - ✅ Reliable initial deployment with hardware detection
 - ✅ Powerful ongoing management and coordination
 - ✅ Best tool for each job
@@ -28,6 +31,7 @@ This approach gives you:
 ```
 
 **What happens:**
+
 - ✅ Hardware configuration generated automatically
 - ✅ Disk partitioning via disko configuration
 - ✅ Full NixOS system installation
@@ -88,12 +92,14 @@ nix run github:clan-lol/clan-core -- services enable monitoring
 ### Daily Configuration Updates
 
 **OLD WAY (don't use after migration):**
+
 ```bash
 # ❌ Don't use nixos-anywhere for updates
 ./scripts/deploy.sh 192.168.1.100  # Wrong for ongoing management
 ```
 
 **NEW WAY (use Clan):**
+
 ```bash
 # ✅ Use Clan for all updates
 nix run github:clan-lol/clan-core -- machines deploy w3max-workstation
@@ -102,6 +108,7 @@ nix run github:clan-lol/clan-core -- machines deploy w3max-workstation
 ### Adding New Machines
 
 **For each new machine:**
+
 ```bash
 # 1. Use nixos-anywhere for initial setup
 ./scripts/deploy.sh <new-machine-ip>
@@ -116,6 +123,7 @@ nix run github:clan-lol/clan-core -- machines add-peer <new-machine> w3max-works
 ## 📋 Migration Checklist
 
 ### Pre-Migration (nixos-anywhere phase)
+
 - [ ] Target machine booted into NixOS installer
 - [ ] SSH access configured (root password set)
 - [ ] Network connectivity verified
@@ -124,14 +132,17 @@ nix run github:clan-lol/clan-core -- machines add-peer <new-machine> w3max-works
 - [ ] System rebooted and accessible
 
 ### Post-Migration Verification
+
 - [ ] `nix run github:clan-lol/clan-core -- machines list` shows machine
 - [ ] `nix run github:clan-lol/clan-core -- machines status` shows online
-- [ ] `nix run github:clan-lol/clan-core -- machines show <machine>` shows correct details
+- [ ] `nix run github:clan-lol/clan-core -- machines show <machine>` shows
+      correct details
 - [ ] Test deployment: `--dry-run` works without errors
 - [ ] First Clan deployment successful
 - [ ] SSH access works: `ssh w3max@<machine-ip>`
 
 ### Advanced Features (Optional)
+
 - [ ] Mesh networking configured between machines
 - [ ] Required services enabled (zerotier, backup, monitoring)
 - [ ] Secrets management configured
@@ -141,6 +152,7 @@ nix run github:clan-lol/clan-core -- machines add-peer <new-machine> w3max-works
 ## 🤔 When to Use Which Tool
 
 ### Use nixos-anywhere (`scripts/deploy.sh`) When:
+
 - ✅ Installing NixOS on fresh/blank machine
 - ✅ Hardware detection and configuration needed
 - ✅ Initial system bootstrap required
@@ -148,6 +160,7 @@ nix run github:clan-lol/clan-core -- machines add-peer <new-machine> w3max-works
 - ✅ Testing new machine configurations
 
 ### Use Clan Commands When:
+
 - ✅ Updating existing NixOS machines
 - ✅ Managing multiple machines as a fleet
 - ✅ Coordinating services across machines
@@ -157,7 +170,9 @@ nix run github:clan-lol/clan-core -- machines add-peer <new-machine> w3max-works
 ## 🚨 Common Migration Issues
 
 ### Issue: Clan can't find machine
+
 **Symptoms:** `machines list` doesn't show your machine
+
 ```bash
 # Check flake configuration
 cat nix/clan.nix
@@ -168,7 +183,9 @@ ssh root@<machine-ip>
 ```
 
 ### Issue: Deployment fails after migration
+
 **Symptoms:** Clan deploy command errors
+
 ```bash
 # Check machine accessibility
 nix run github:clan-lol/clan-core -- machines debug-ssh <machine>
@@ -181,7 +198,9 @@ nix run github:clan-lol/clan-core -- machines show <machine>
 ```
 
 ### Issue: Services not working
+
 **Symptoms:** Clan services fail to start
+
 ```bash
 # Check service status
 nix run github:clan-lol/clan-core -- services status
@@ -217,11 +236,11 @@ After successful migration:
 ## 💡 Pro Tips
 
 - **Keep deploy.sh around** - you'll need it for future fresh installations
-- **Use VM for testing** - always test configuration changes on the VM first
 - **Monitor the first few deployments** - watch for any issues during transition
 - **Document custom changes** - note any deviations from standard configuration
 - **Set up alerts** - get notified if machines go offline or deployments fail
 
 ---
 
-**Remember:** This migration gives you the best of both worlds - reliable initial deployment AND powerful ongoing management! 🚀
+**Remember:** This migration gives you the best of both worlds - reliable
+initial deployment AND powerful ongoing management! 🚀

@@ -4,45 +4,9 @@
       w3max's Flakes
    <br>
       <img src="./.github/assets/pallet/pallet-0.png" width="600px" /> <br>
-
-    <p></p>
-    <div align="center">
-       <a href="https://github.com/w3max/nixos-config/stargazers">
-          <img src="https://img.shields.io/github/stars/w3max/nixos-config?color=FABD2F&labelColor=282828&style=for-the-badge&logo=starship&logoColor=FABD2F">
-       </a>
-       <a href="https://github.com/w3max/nixos-config/">
-          <img src="https://img.shields.io/github/repo-size/w3max/nixos-config?color=B16286&labelColor=282828&style=for-the-badge&logo=github&logoColor=B16286">
-       </a>
-       <a = href="https://nixos.org">
-          <img src="https://img.shields.io/badge/NixOS-unstable-blue.svg?style=for-the-badge&labelColor=282828&logo=NixOS&logoColor=458588&color=458588">
-       </a>
-       <a href="https://github.com/w3max/nixos-config/blob/main/LICENSE">
-          <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=282828&colorB=98971A&logo=unlicense&logoColor=98971A&"/>
-       </a>
-    </div>
-    <br>
-
-</div>
 </h1>
 
-### 🖼️ Gallery
-
-<p align="center">
-   <img src="./.github/assets/screenshots/1.png" style="margin-bottom: 15px;"/> <br>
-   <img src="./.github/assets/screenshots/2.png" style="margin-bottom: 15px;"/> <br>
-   <img src="./.github/assets/screenshots/3.png" style="margin-bottom: 15px;"/> <br>
-   <img src="./.github/assets/screenshots/4.png" style="margin-bottom: 15px;"/> <br>
-   <img src="./.github/assets/screenshots/5.png" style="margin-bottom: 15px;"/> <br>
-   <img src="./.github/assets/screenshots/hyprlock.png" style="margin-bottom: 15px;" /> <br>
-   Screenshots last updated <b>2025-01-05</b>
-</p>
-
 # 🗃️ Overview
-
-## ⚡ Recent Major Improvements
-
-🎉 **Latest Updates**: This configuration has been significantly enhanced with
-enterprise-grade features:
 
 ### 🔐 **Security & Secret Management**
 
@@ -128,9 +92,6 @@ This configuration supports advanced deployment and infrastructure management:
   settings
   - [desktop](machines/desktop/) 🖥️ Desktop specific configuration + hyprland
     monitors
-  - [laptop](machines/laptop/) 💻 Laptop specific configuration + power
-    management
-  - [vm](machines/vm/) 🗄️ VM specific configuration
   - [w3max-workstation](machines/w3max-workstation/) 🎮 High-end AMD gaming/dev
     workstation with disko config
 - [modules](modules) 🍱 semantic modularized NixOS configurations
@@ -151,12 +112,10 @@ This configuration supports advanced deployment and infrastructure management:
 
 ### 🏠 Machine Configurations
 
-| Machine               | System Modules                          | Home Modules          | Description                                |
-| --------------------- | --------------------------------------- | --------------------- | ------------------------------------------ |
-| **desktop**           | common + desktop + development + gaming | all home modules      | Full-featured desktop setup                |
-| **laptop**            | common + desktop + development          | desktop + development | Mobile development machine                 |
-| **vm**                | common + desktop                        | basic desktop         | Minimal testing environment                |
-| **w3max-workstation** | common + desktop + development + gaming | all home modules      | High-end AMD gaming/dev station with disko |
+| Machine               | System Modules                          | Home Modules     | Description                                |
+| --------------------- | --------------------------------------- | ---------------- | ------------------------------------------ |
+| **desktop**           | common + desktop + development + gaming | all home modules | Full-featured desktop setup                |
+| **w3max-workstation** | common + desktop + development + gaming | all home modules | High-end AMD gaming/dev station with disko |
 
 ## 📓 Components
 
@@ -168,7 +127,7 @@ This configuration supports advanced deployment and infrastructure management:
 | **Notification Daemon**     |                                  [swaync][swaync]                                   |
 | **Terminal Emulator**       |                                 [Ghostty][Ghostty]                                  |
 | **Shell**                   |                     [zsh][zsh] + [powerlevel10k][powerlevel10k]                     |
-| **Text Editor**             |                       [VSCodium][VSCodium] + [Neovim][Neovim]                       |
+| **Text Editor**             |                                [VSCodium][VSCodium]                                 |
 | **network management tool** | [NetworkManager][NetworkManager] + [network-manager-applet][network-manager-applet] |
 | **System resource monitor** |                                    [Btop][Btop]                                     |
 | **File Manager**            |                             [nemo][nemo] + [yazi][yazi]                             |
@@ -412,7 +371,6 @@ Keybindings
 - `$mainMod, C ,exec, hyprpicker -a`
 - `$mainMod, W,exec, wallpaper-picker`
 - `$mainMod, N, exec, swaync-client -t -sw`
-- `$mainMod SHIFT, W, exec, vm-start`
 
 ##### screenshot
 
@@ -572,7 +530,7 @@ prompting for your password.
 
 ## 🚀 Remote Installation with nixos-anywhere
 
-For remote installations on fresh machines or VMs:
+For remote installations on fresh machines:
 
 #### 1. **Prepare target machine**
 
@@ -649,7 +607,7 @@ nix run github:clan-lol/clan-core -- machines deploy --update-all
 
 ```bash
 # Set up machine mesh networking
-nix run github:clan-lol/clan-core -- machines add-peer desktop laptop
+nix run github:clan-lol/clan-core -- machines add-peer desktop
 
 # Coordinate services across machines
 nix run github:clan-lol/clan-core -- services start backup-sync
@@ -663,8 +621,6 @@ nix run github:clan-lol/clan-core -- machines health-check
 | Machine             | Description                     | Tags                     | Best Managed With   |
 | ------------------- | ------------------------------- | ------------------------ | ------------------- |
 | `desktop`           | Full-featured desktop setup     | desktop                  | Clan (post-install) |
-| `laptop`            | Mobile development machine      | laptop, mobile           | Clan (post-install) |
-| `vm`                | Minimal testing environment     | vm, test                 | Both tools          |
 | `w3max-workstation` | High-end AMD gaming/dev station | desktop, gaming, storage | deploy.sh → clan    |
 
 ### 🔄 Migration from nixos-anywhere to Clan
@@ -761,10 +717,9 @@ It will also automatically copy the hardware configuration from
 `./machines/${host}/hardware-configuration.nix` so that the hardware
 configuration used is yours and not the default one.
 
-#### 6. Choose a machine (desktop / laptop)
+#### 6. Choose a machine
 
-Now you will need to choose the machine you want. It depend on whether you are
-using a desktop or laptop (or a VM altho it can be really buggy).
+Now you will need to choose the machine you want.
 
 #### 7. Build the system
 
@@ -798,7 +753,6 @@ home-manager config.
 [audacious]: https://audacious-media-player.org/
 [mpv]: https://github.com/mpv-player/mpv
 [VSCodium]: https://vscodium.com/
-[Neovim]: https://github.com/neovim/neovim
 [grimblast]: https://github.com/hyprwm/contrib
 [imv]: https://sr.ht/~exec64/imv/
 [swaync]: https://github.com/ErikReider/SwayNotificationCenter
