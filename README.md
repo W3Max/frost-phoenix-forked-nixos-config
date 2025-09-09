@@ -221,11 +221,21 @@ Nixos (EXPAND)
 
 - `cdnix` $\rightarrow$ `cd ~/nixos-config && codium ~/nixos-config`
 - `ns` $\rightarrow$ `nom-shell --run zsh`
-- `nix-test` $\rightarrow$ `nh os test`
-- `nix-switch` $\rightarrow$ `nh os switch`
-- `nix-update` $\rightarrow$ `nh os switch --update`
-- `nix-clean` $\rightarrow$ `nh clean all --keep 5`
-- `nix-search` $\rightarrow$ `nh search`
+- `nft` $\rightarrow$ `nh os test`
+- `nfs` $\rightarrow$ `nh os switch`
+- `nfu` $\rightarrow$ `nh os switch --update`
+- `nc` $\rightarrow$ `nh clean all --keep 5`
+
+**Clan Management:**
+- `cl` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines list`
+- `cs` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines status`
+- `cd` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines deploy`
+- `cdr` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines deploy --dry-run`
+- `cdu` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines deploy --update-all`
+- `csh` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines show`
+- `csl` $\rightarrow$ `nix run github:clan-lol/clan-core -- secrets list`
+- `css` $\rightarrow$ `nix run github:clan-lol/clan-core -- secrets set`
+- `csg` $\rightarrow$ `nix run github:clan-lol/clan-core -- secrets get`
 
 </details>
 

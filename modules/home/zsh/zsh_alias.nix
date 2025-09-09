@@ -35,6 +35,17 @@
       nfu = "nh os switch --update";
       # nix-search = "nh search";
 
+      # Clan management
+      cl = "nix run github:clan-lol/clan-core -- machines list";
+      cs = "nix run github:clan-lol/clan-core -- machines status";
+      cd = "nix run github:clan-lol/clan-core -- machines deploy";
+      cdr = "nix run github:clan-lol/clan-core -- machines deploy --dry-run";
+      cdu = "nix run github:clan-lol/clan-core -- machines deploy --update-all";
+      csh = "nix run github:clan-lol/clan-core -- machines show";
+      csl = "nix run github:clan-lol/clan-core -- secrets list";
+      css = "nix run github:clan-lol/clan-core -- secrets set";
+      csg = "nix run github:clan-lol/clan-core -- secrets get";
+
       # python
       piv = "python -m venv .venv";
       psv = "source .venv/bin/activate";
