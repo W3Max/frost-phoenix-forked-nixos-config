@@ -4,6 +4,17 @@
 {
   # Clan configuration goes in flake outputs
   flake = {
+    # Clan core settings
+    clanCore = {
+      # Directory where clan stores its data
+      directory = "/home/w3max/nixos-config";
+      # Clan metadata
+      meta = {
+        name = "W3Max-Clan";
+        description = "Personal computing infrastructure";
+      };
+    };
+    
     # This will be used by Clan's tooling
     clanInternals = {
       # Inventory class for clan operations

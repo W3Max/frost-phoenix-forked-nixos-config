@@ -12,14 +12,15 @@
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = false;
 
-  # allow local remote access to make it easier to toy around with the system
+  # SSH configuration for VM - secured for testing environment
   services.openssh = {
     enable = true;
     ports = [ 22 ];
     settings = {
-      PasswordAuthentication = true;
-      AllowUsers = null;
-      PermitRootLogin = "yes";
+      PasswordAuthentication = false;
+      AllowUsers = [ "w3max" ];
+      PermitRootLogin = "no";
+      PubkeyAuthentication = true;
     };
   };
 }

@@ -271,14 +271,14 @@ on.
 
 <details>
 <summary>
-toggle_oppacity.sh
+toggle_opacity.sh
 </summary>
 
-**Description:** This script toggles the Hyperland oppacity effect. If the
-oppacity is currently set to 0.90, it will be set to 1, and if it's set to 1, it
+**Description:** This script toggles the Hyprland opacity effect. If the
+opacity is currently set to 0.90, it will be set to 1, and if it's set to 1, it
 will be set to 0.90.
 
-**Usage:** `toggle_oppacity`
+**Usage:** `toggle_opacity`
 
 </details>
 
@@ -352,7 +352,7 @@ Keybindings
 - `$mainMod SHIFT, Escape, exec, power-menu`
 - `$mainMod, P, pseudo,`
 - `$mainMod, J, togglesplit,`
-- `$mainMod, T, exec, toggle_oppacity`
+- `$mainMod, T, exec, toggle_opacity`
 - `$mainMod, E, exec, nemo`
 - `$mainMod SHIFT, B, exec, toggle_waybar`
 - `$mainMod, C ,exec, hyprpicker -a`
