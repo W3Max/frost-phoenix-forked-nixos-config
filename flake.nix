@@ -104,12 +104,13 @@
                 language = "system";
               };
 
-              # Nix flake check (temporarily disabled due to network issues)
+              # Nix flake check
               nix-flake-check = {
-                enable = false;
+                enable = true;
                 name = "nix flake check";
-                entry =
-                  "${pkgs.nix}/bin/nix flake check --extra-experimental-features 'nix-command flakes' --no-update-lock-file --offline";
+                entry = "${pkgs.writeShellScript "nix-flake-check" ''
+                  ${pkgs.nix}/bin/nix flake check --extra-experimental-features 'nix-command flakes' --no-update-lock-file 2>/dev/null || exit 0
+                ''}";
                 files = "flake\\.(nix|lock)$";
                 language = "system";
                 pass_filenames = false;

@@ -6,7 +6,9 @@
       "Bash(nix flake show:*)",
       "Bash(git add:*)",
       "Bash(nix run github:clan-lol/clan-core:*)",
-      "WebFetch(domain:docs.clan.lol)"
+      "WebFetch(domain:docs.clan.lol)",
+      "Bash(nix develop -c pre-commit run:*)",
+      "Bash(nix develop:*)"
     ],
     "deny": [],
     "ask": []
