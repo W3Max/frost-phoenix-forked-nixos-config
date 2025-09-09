@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{ lib, ... }: {
   disko.devices = {
     disk = {
       # Kingston KC3000 2TB - Primary System Drive
@@ -37,15 +36,18 @@
                 subvolumes = {
                   "/root" = {
                     mountpoint = "/";
-                    mountOptions = [ "compress=zstd:1" "noatime" "ssd" "space_cache=v2" ];
+                    mountOptions =
+                      [ "compress=zstd:1" "noatime" "ssd" "space_cache=v2" ];
                   };
                   "/nix" = {
                     mountpoint = "/nix";
-                    mountOptions = [ "compress=zstd:3" "noatime" "ssd" "space_cache=v2" ];
+                    mountOptions =
+                      [ "compress=zstd:3" "noatime" "ssd" "space_cache=v2" ];
                   };
                   "/snapshots" = {
                     mountpoint = "/snapshots";
-                    mountOptions = [ "compress=zstd:1" "noatime" "ssd" "space_cache=v2" ];
+                    mountOptions =
+                      [ "compress=zstd:1" "noatime" "ssd" "space_cache=v2" ];
                   };
                 };
               };
@@ -79,15 +81,23 @@
                 subvolumes = {
                   "/home" = {
                     mountpoint = "/home";
-                    mountOptions = [ "compress=zstd:1" "noatime" "ssd" "space_cache=v2" ];
+                    mountOptions =
+                      [ "compress=zstd:1" "noatime" "ssd" "space_cache=v2" ];
                   };
                   "/docker" = {
                     mountpoint = "/var/lib/docker";
-                    mountOptions = [ "compress=no" "noatime" "ssd" "space_cache=v2" ];
+                    mountOptions =
+                      [ "compress=no" "noatime" "ssd" "space_cache=v2" ];
                   };
                   "/vms" = {
                     mountpoint = "/var/lib/libvirt";
-                    mountOptions = [ "compress=no" "noatime" "ssd" "space_cache=v2" "nodatacow" ];
+                    mountOptions = [
+                      "compress=no"
+                      "noatime"
+                      "ssd"
+                      "space_cache=v2"
+                      "nodatacow"
+                    ];
                   };
                 };
               };
@@ -111,15 +121,22 @@
                 subvolumes = {
                   "/data" = {
                     mountpoint = "/data";
-                    mountOptions = [ "compress=zstd:3" "noatime" "space_cache=v2" "autodefrag" ];
+                    mountOptions = [
+                      "compress=zstd:3"
+                      "noatime"
+                      "space_cache=v2"
+                      "autodefrag"
+                    ];
                   };
                   "/backups" = {
                     mountpoint = "/backups";
-                    mountOptions = [ "compress=zstd:9" "noatime" "space_cache=v2" ];
+                    mountOptions =
+                      [ "compress=zstd:9" "noatime" "space_cache=v2" ];
                   };
                   "/media" = {
                     mountpoint = "/media/storage";
-                    mountOptions = [ "compress=zstd:1" "noatime" "space_cache=v2" ];
+                    mountOptions =
+                      [ "compress=zstd:1" "noatime" "space_cache=v2" ];
                   };
                 };
               };

@@ -1,5 +1,4 @@
-{ username, ... }:
-{
+{ username, ... }: {
   services = {
     xserver = {
       enable = true;
@@ -10,9 +9,7 @@
       enable = true;
       user = "${username}";
     };
-    libinput = {
-      enable = true;
-    };
+    libinput = { enable = true; };
   };
   # To prevent getting stuck at shutdown
   systemd.settings.Manager.DefaultTimeoutStopSec = "10s";

@@ -1,6 +1,1 @@
-{ inputs, pkgs, ... }:
-{
-  programs.waybar = {
-    enable = true;
-  };
-}
+{ inputs, pkgs, ... }: { programs.waybar = { enable = true; }; }

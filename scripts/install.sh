@@ -6,16 +6,11 @@ init() {
 
     # Colors
     NORMAL=$(tput sgr0)
-    WHITE=$(tput setaf 7)
-    BLACK=$(tput setaf 0)
     RED=$(tput setaf 1)
     GREEN=$(tput setaf 2)
     YELLOW=$(tput setaf 3)
     BLUE=$(tput setaf 4)
-    MAGENTA=$(tput setaf 5)
     CYAN=$(tput setaf 6)
-    BRIGHT=$(tput bold)
-    UNDERLINE=$(tput smul)
 }
 
 confirm() {
@@ -28,32 +23,32 @@ confirm() {
 }
 
 print_header() {
-    echo -E "$CYAN
-    __        _____ __  __                _   _ _       ___  ____  
-    \ \      / /__ _|  \/  | __ ___  __  | \ | (_)_  __/ _ \/ ___| 
-     \ \ /\ / /  _| | |\/| |/ _\` \ \/ /   |  \| | \ \/ / | | \___ \ 
+    printf "%s" "$CYAN
+    __        _____ __  __                _   _ _       ___  ____
+    \ \      / /__ _|  \/  | __ ___  __  | \ | (_)_  __/ _ \/ ___|
+     \ \ /\ / /  _| | |\/| |/ _\` \ \/ /   |  \| | \ \/ / | | \___ \
       \ V  V /  _| || |  | | (_| |>  <    | |\  | |>  <| |_| |___) |
-       \_/\_/  |___|_|  |_|\__,_/_/\_\   |_| \_|_/_/\_\\\\___/|____/ 
-                                                                     
-        ___           _        _ _                                   
-       |_ _|_ __  ___| |_ __ _| | | ___ _ __                         
-        | || '_ \/ __| __/ _\` | | |/ _ \ '__|                        
-        | || | | \__ \ || (_| | | |  __/ |                           
-       |___|_| |_|___/\__\__,_|_|_|\___|_|                           
+       \_/\_/  |___|_|  |_|\__,_/_/\_\   |_| \_|_/_/\_\\\\___/|____/
+
+        ___           _        _ _
+       |_ _|_ __  ___| |_ __ _| | | ___ _ __
+        | || '_ \/ __| __/ _\` | | |/ _ \ '__|
+        | || | | \__ \ || (_| | | |  __/ |
+       |___|_| |_|___/\__\__,_|_|_|\___|_|
 
 
-                  $BLUE https://github.com/w3max $RED 
+                  $BLUE https://github.com/w3max $RED
       ! To make sure everything runs correctly DONT run as root ! $GREEN
-                        -> '"./scripts/install.sh"' $NORMAL
+                        -> \"./scripts/install.sh\" $NORMAL
 
     "
 }
 
 get_username() {
     echo -en "Enter your$GREEN username$NORMAL : $YELLOW"
-    read username
+    read -r username
     echo -en "$NORMAL"
-    echo -en "Use$YELLOW "$username"$NORMAL as ${GREEN}username${NORMAL} ? "
+    echo -en "Use$YELLOW \"$username\"$NORMAL as ${GREEN}username${NORMAL} ? "
     confirm
 }
 
@@ -79,7 +74,7 @@ get_host() {
     fi
 
     echo -en "$NORMAL"
-    echo -en "Use the$YELLOW "$HOST"$NORMAL ${GREEN}host${NORMAL} ? "
+    echo -en "Use the$YELLOW \"$HOST\"$NORMAL ${GREEN}host${NORMAL} ? "
     confirm
 }
 

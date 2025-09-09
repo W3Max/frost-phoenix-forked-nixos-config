@@ -1,10 +1,7 @@
-{ ... }:
-{
+{ ... }: {
   programs.lazygit = {
     enable = true;
 
-    settings = {
-      gui.border = "single";
-    };
+    settings = { gui.border = "single"; };
   };
 }

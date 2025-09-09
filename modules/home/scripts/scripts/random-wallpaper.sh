@@ -6,7 +6,7 @@ wallpapers_folder="$HOME/Pictures/wallpapers/others"
 current_wallpaper=$(readlink "$wallpaper_path/wallpaper" 2> /dev/null)
 current_wallpaper_name="$(basename "$current_wallpaper")"
 
-wallpaper_list=($(ls "$wallpapers_folder"))
+mapfile -t wallpaper_list < <(find "$wallpapers_folder" -maxdepth 1 -type f -printf '%f\n')
 wallpaper_count=${#wallpaper_list[@]}
 
 while true; do

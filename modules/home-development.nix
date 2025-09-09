@@ -1,6 +1,5 @@
 # Development home-manager configuration
-{ ... }:
-{
+{ ... }: {
   imports = [
     # Home development modules
     ./home/git.nix

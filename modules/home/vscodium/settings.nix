@@ -1,13 +1,15 @@
-{ ... }:
-{
+{ ... }: {
   programs.vscode.profiles.default = {
     userSettings = {
       "update.mode" = "none";
-      "extensions.autoUpdate" = false; # This stuff fixes vscode freaking out when theres an update
-      "window.titleBarStyle" = "custom"; # needed otherwise vscode crashes, see https://github.com/NixOS/nixpkgs/issues/246509
+      "extensions.autoUpdate" =
+        false; # This stuff fixes vscode freaking out when theres an update
+      "window.titleBarStyle" =
+        "custom"; # needed otherwise vscode crashes, see https://github.com/NixOS/nixpkgs/issues/246509
 
       "window.menuBarVisibility" = "toggle";
-      "editor.fontFamily" = "'Maple Mono', 'SymbolsNerdFont', 'monospace', monospace";
+      "editor.fontFamily" =
+        "'Maple Mono', 'SymbolsNerdFont', 'monospace', monospace";
       "terminal.integrated.fontFamily" = "'Maple Mono', 'SymbolsNerdFont'";
       "editor.fontSize" = 18;
       "workbench.colorTheme" = "Gruvbox Dark Hard";
@@ -45,10 +47,7 @@
       "editor.mouseWheelZoom" = true;
 
       # C/C++
-      "clangd.arguments" = [
-        "--clang-tidy"
-        "--inlay-hints=false"
-      ];
+      "clangd.arguments" = [ "--clang-tidy" "--inlay-hints=false" ];
 
       # Zig
       # "zig.initialSetupDone" = true;

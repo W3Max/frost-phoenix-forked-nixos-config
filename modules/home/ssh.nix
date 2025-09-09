@@ -1,5 +1,4 @@
-{ ... }:
-{
+{ ... }: {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -11,7 +10,7 @@
         controlPath = "~/.ssh/control-%r@%h:%p";
         controlPersist = "10m";
       };
-      
+
       github = {
         host = "github.com";
         hostname = "ssh.github.com";

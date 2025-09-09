@@ -1,6 +1,5 @@
 # Desktop home-manager configuration
-{ ... }:
-{
+{ ... }: {
   imports = [
     # Home desktop modules
     ./home/browser.nix
@@ -18,7 +17,7 @@
     ./home/waybar
     ./home/waypaper.nix
     ./home/xdg-mimes.nix
-    
+
     # Creative tools
     ./home/audacious/audacious.nix
     ./home/obsidian.nix

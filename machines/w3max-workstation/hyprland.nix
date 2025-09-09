@@ -1,6 +1,5 @@
 # W3Max Workstation-specific Hyprland monitor configuration
-{ ... }:
-{
+{ ... }: {
   wayland.windowManager.hyprland.settings = {
     monitor = [
       # Configure your desktop monitors here

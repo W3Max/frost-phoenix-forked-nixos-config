@@ -1,6 +1,5 @@
 # Common home-manager configuration shared across all machines
-{ ... }:
-{
+{ ... }: {
   imports = [
     # Essential home modules that everyone needs
     ./home/bat.nix

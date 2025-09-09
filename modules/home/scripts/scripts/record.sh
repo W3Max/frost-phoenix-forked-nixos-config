@@ -44,7 +44,7 @@ screen() {
 
 area() {
     GEOMETRY=$(slurp)
-    if [[ ! -z "$GEOMETRY" ]]; then
+    if [[ -n "$GEOMETRY" ]]; then
         notify "Starting Recording" "Your screen is being recorded"
         timeout 600 wf-recorder -F format=rgb24 -x rgb24 -p qp=0 -p crf=0 -p preset=slow -c libx264rgb -g "$GEOMETRY" -f "$TMP_MP4_FILE"
     fi
@@ -68,8 +68,8 @@ stop() {
                 SavePath="$FILENAME"
             fi
             [[ $SavePath =~ \.gif$ ]] || SavePath+='.gif'
-            mv $TMP_GIF_RESULT $SavePath
-            wl-copy -t image/png < $SavePath
+            mv "$TMP_GIF_RESULT" "$SavePath"
+            wl-copy -t image/png < "$SavePath"
             notify "GIF conversion completed" "GIF saved to $SavePath"
         else
             FILENAME+="mp4"
@@ -78,8 +78,8 @@ stop() {
                 SavePath="$FILENAME"
             fi
             [[ $SavePath =~ \.mp4$ ]] || SavePath+='.mp4'
-            mv $TMP_MP4_FILE $SavePath
-            wl-copy -t video/mp4 < $SavePath
+            mv "$TMP_MP4_FILE" "$SavePath"
+            wl-copy -t video/mp4 < "$SavePath"
             notify "Stopped Recording" "Video saved to $SavePath"
         fi
 

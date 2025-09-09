@@ -1,14 +1,12 @@
 # nix/machines.nix
 { self, inputs, ... }:
-let
-  username = "w3max";
-in
-{
+let username = "w3max";
+in {
   flake.nixosConfigurations = {
     # Desktop configuration
     desktop = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { 
+      specialArgs = {
         host = "desktop";
         inherit self inputs username;
       };
@@ -22,7 +20,7 @@ in
         ../machines/desktop
       ];
     };
-    
+
     # Laptop configuration
     laptop = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -39,7 +37,7 @@ in
         ../machines/laptop
       ];
     };
-    
+
     # VM configuration
     vm = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -55,11 +53,11 @@ in
         ../machines/vm
       ];
     };
-    
+
     # W3Max Workstation - AMD Ryzen 7800X3D + RX 7900 XTX
     w3max-workstation = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { 
+      specialArgs = {
         inherit inputs self username;
         host = "w3max-workstation";
       };
@@ -67,19 +65,19 @@ in
         # Core modules
         inputs.clan-core.nixosModules.clanCore
         inputs.disko.nixosModules.disko
-        
+
         # Hardware optimizations
         inputs.nixos-hardware.nixosModules.common-cpu-amd
         inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
         inputs.nixos-hardware.nixosModules.common-gpu-amd
         inputs.nixos-hardware.nixosModules.common-pc-ssd
-        
+
         # Module groups
         ../modules/common.nix
         ../modules/desktop.nix
         ../modules/development.nix
         ../modules/gaming.nix
-        
+
         # Machine-specific configuration
         ../machines/w3max-workstation
       ];

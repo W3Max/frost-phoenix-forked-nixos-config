@@ -1,9 +1,3 @@
-{ ... }:
-{
-  imports = [
-    ./vscodium.nix
-    ./settings.nix
-    ./extensions.nix
-    ./keybinds.nix
-  ];
+{ ... }: {
+  imports = [ ./vscodium.nix ./settings.nix ./extensions.nix ./keybinds.nix ];
 }

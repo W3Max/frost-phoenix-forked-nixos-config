@@ -1,4 +1,1 @@
-{ pkgs, ... }:
-{
-  home.packages = [ pkgs.flow-control ];
-}
+{ pkgs, ... }: { home.packages = [ pkgs.flow-control ]; }

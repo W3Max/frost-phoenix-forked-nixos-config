@@ -43,7 +43,7 @@ ssh -p "$SSH_PORT" "$TARGET_USER@$TARGET_HOST" "lsblk -d -o NAME,SIZE,MODEL" || 
 echo ""
 log_warn "Please verify the disk devices in disk-config.nix match your system:"
 echo "  - nvme0n1 should be your Kingston KC3000 2TB"
-echo "  - nvme1n1 should be your WD Blue SN5000 1TB"  
+echo "  - nvme1n1 should be your WD Blue SN5000 1TB"
 echo "  - sda should be your Seagate IronWolf 8TB"
 echo ""
 read -p "Are the disk assignments correct? (y/n): " -n 1 -r
@@ -127,7 +127,7 @@ Connect to your new system: ssh w3max@$TARGET_HOST
 
 Then consider setting up:
 - Clone configuration: git clone https://github.com/W3Max/nixos-config.git ~/nixos-config
-- Configure browser settings manually  
+- Configure browser settings manually
 - Update git credentials in modules/home/git.nix
 - Set up development environments in /home
 - Configure game libraries in /games
@@ -135,7 +135,7 @@ Then consider setting up:
 
 ${GREEN}=== Performance Notes ===${NC}
 ✓ AMD-optimized for Ryzen 7800X3D + RX 7900 XTX
-✓ CPU governor set to 'performance' on AC power  
+✓ CPU governor set to 'performance' on AC power
 ✓ Security mitigations disabled for gaming performance
 ✓ Btrfs compression optimized per filesystem type
 ✓ SSD optimizations enabled across all drives

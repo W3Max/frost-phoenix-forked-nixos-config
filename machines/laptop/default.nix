@@ -1,8 +1,11 @@
-{ pkgs, config, ... }:
-{
-  imports = [
-    ./hardware-configuration.nix
-  ];
+{ pkgs, config, ... }: {
+  imports = [ ./hardware-configuration.nix ];
+
+  # Deploy machine-specific age key for secrets
+  environment.etc."machine-age-key" = {
+    text = builtins.readFile ./secrets/laptop.key;
+    mode = "0400";
+  };
 
   environment.systemPackages = with pkgs; [
     acpi
@@ -51,12 +54,7 @@
 
   boot = {
     kernelModules = [ "acpi_call" ];
-    extraModulePackages =
-      with config.boot.kernelPackages;
-      [
-        acpi_call
-        cpupower
-      ]
-      ++ [ pkgs.cpupower-gui ];
+    extraModulePackages = with config.boot.kernelPackages;
+      [ acpi_call cpupower ] ++ [ pkgs.cpupower-gui ];
   };
 }

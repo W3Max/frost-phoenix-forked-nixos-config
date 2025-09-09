@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   programs = {
     steam = {
       enable = false;
@@ -15,10 +14,7 @@
     gamescope = {
       enable = true;
       capSysNice = true;
-      args = [
-        "--rt"
-        "--expose-wayland"
-      ];
+      args = [ "--rt" "--expose-wayland" ];
     };
   };
 }

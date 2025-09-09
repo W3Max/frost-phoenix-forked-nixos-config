@@ -1,0 +1,12 @@
+---
+keys:
+  - &w3max age1ee87weqkcdtpauhsv6drxstwx03yswn05fvalssvfweshcpt9pjs9yw32x
+  - &desktop age1c6c4qdag62p8sj4dgwerhkfgqnxfckdz486d85s5de09gnpy23kslnnxj6
+  - &laptop age1f4qmwrp7l2wdvc2g984q9lqglrqt82gz809han9u8hduuxsf643qns9uty
+  - &vm age1vnwk78cp24q7gqhuel0xm4vvetqz3y8affu7f8jpwv0e4qhtgetq07lpah
+  - &workstation age1jyfm0tmscyswmck0my95tdte2wyydhlww7k0fpxcwcjgwkngma3sdsk6zf
+
+creation_rules:
+  - path_regex: .*
+    age: >-
+      age1ee87weqkcdtpauhsv6drxstwx03yswn05fvalssvfweshcpt9pjs9yw32x

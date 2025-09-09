@@ -1,4 +1,1 @@
-{ inputs, ... }:
-{
-  imports = [ ./hyprexpo.nix ];
-}
+{ inputs, ... }: { imports = [ ./hyprexpo.nix ]; }

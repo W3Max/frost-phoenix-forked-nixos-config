@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   home.packages = with pkgs; [ viewnior ];
 
   xdg.configFile."viewnior/viewnior.conf".text = ''

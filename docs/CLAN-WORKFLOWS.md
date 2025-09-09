@@ -11,7 +11,7 @@ This guide covers common workflows for managing your NixOS infrastructure with C
 # Update a single machine
 nix run github:clan-lol/clan-core -- machines deploy w3max-workstation
 
-# Update all machines  
+# Update all machines
 nix run github:clan-lol/clan-core -- machines deploy
 
 # Update with latest flake inputs
@@ -38,7 +38,7 @@ nix run github:clan-lol/clan-core -- machines show w3max-workstation
 nix run github:clan-lol/clan-core -- machines add-peer desktop laptop
 nix run github:clan-lol/clan-core -- machines add-peer w3max-workstation vm
 
-# Verify mesh connectivity  
+# Verify mesh connectivity
 nix run github:clan-lol/clan-core -- machines ping desktop
 ```
 
@@ -77,7 +77,7 @@ nix run github:clan-lol/clan-core -- machines history w3max-workstation
 # Rollback to previous generation
 nix run github:clan-lol/clan-core -- machines rollback w3max-workstation
 
-# Rollback to specific generation  
+# Rollback to specific generation
 nix run github:clan-lol/clan-core -- machines rollback w3max-workstation --generation 42
 ```
 
@@ -113,18 +113,46 @@ nix run github:clan-lol/clan-core -- machines add-peer <machine-name>
 
 #### Managing Secrets
 ```bash
-# List secrets
+# List all secrets
 nix run github:clan-lol/clan-core -- secrets list
 
-# Add new secret
+# Add new secret (will prompt for content)
 nix run github:clan-lol/clan-core -- secrets set api-key
 
-# Update existing secret
-nix run github:clan-lol/clan-core -- secrets update database-password
+# View secret (requires admin access)
+nix run github:clan-lol/clan-core -- secrets get database-password
 
-# Deploy secrets to machines
-nix run github:clan-lol/clan-core -- secrets deploy
+# Rename secret
+nix run github:clan-lol/clan-core -- secrets rename old-name new-name
+
+# Remove secret
+nix run github:clan-lol/clan-core -- secrets remove old-secret
 ```
+
+#### User & Machine Access
+```bash
+# Add user with age key
+nix run github:clan-lol/clan-core -- secrets users add alice --age-key <age-public-key>
+
+# List users with secret access
+nix run github:clan-lol/clan-core -- secrets users list
+
+# Add machine to secret system
+nix run github:clan-lol/clan-core -- secrets machines add new-machine <age-public-key>
+
+# Grant machine access to specific secret
+nix run github:clan-lol/clan-core -- secrets machines add-secret desktop my-secret
+```
+
+#### Secret Integration
+Current secrets available in configurations:
+- `user-password` - User account passwords
+- `ssh-host-key` - SSH host keys
+- `wireguard-key` - VPN private keys
+- `github-token` - GitHub API access
+- `backup-token` - Backup service credentials
+
+Access in NixOS config: `config.sops.secrets.<name>.path`
 
 ### Performance Monitoring
 
@@ -152,7 +180,7 @@ nix run github:clan-lol/clan-core -- services enable docker
 nix run github:clan-lol/clan-core -- services enable postgres-dev
 ```
 
-### Gaming Rig Management  
+### Gaming Rig Management
 ```bash
 # Gaming-optimized deployment
 nix run github:clan-lol/clan-core -- machines deploy w3max-workstation --profile gaming
@@ -183,7 +211,7 @@ nix run github:clan-lol/clan-core -- machines debug-ssh w3max-workstation
 # Test network connectivity
 nix run github:clan-lol/clan-core -- machines ping w3max-workstation
 
-# Check machine availability  
+# Check machine availability
 nix run github:clan-lol/clan-core -- machines status --verbose
 ```
 
@@ -223,7 +251,7 @@ nix run github:clan-lol/clan-core -- services reset zerotier
 
 1. **Always test on VM first** before deploying to production machines
 2. **Use --dry-run** to preview changes before applying
-3. **Monitor system health** regularly with status checks  
+3. **Monitor system health** regularly with status checks
 4. **Keep backups** of important secrets and configurations
 5. **Document custom workflows** specific to your environment
 6. **Use tags** to organize machines by function/environment

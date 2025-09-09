@@ -1,6 +1,5 @@
 # Desktop environment configuration
-{ ... }:
-{
+{ ... }: {
   imports = [
     # Core desktop modules
     ./core/xserver.nix

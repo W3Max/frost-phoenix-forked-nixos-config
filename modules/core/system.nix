@@ -1,13 +1,9 @@
-{ pkgs, inputs, ... }:
-{
+{ pkgs, inputs, ... }: {
   # imports = [ inputs.nix-gaming.nixosModules.default ];
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+      experimental-features = [ "nix-command" "flakes" ];
       substituters = [
         "https://nix-community.cachix.org"
         "https://nix-gaming.cachix.org"
@@ -22,22 +18,16 @@
       ];
     };
   };
-  nixpkgs = {
-    overlays = [ inputs.nur.overlays.default ];
-  };
+  nixpkgs = { overlays = [ inputs.nur.overlays.default ]; };
 
-  environment.systemPackages = with pkgs; [
-    wget
-    git
-  ];
+  environment.systemPackages = with pkgs; [ wget git ];
 
   time.timeZone = "America/Montreal";
   i18n.defaultLocale = "en_US.UTF-8";
 
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [
-    ];
+    permittedInsecurePackages = [ ];
   };
 
   system.stateVersion = "24.05";

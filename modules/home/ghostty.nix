@@ -1,19 +1,12 @@
-{ pkgs, host, ... }:
-{
+{ pkgs, host, ... }: {
   programs.ghostty = {
     enable = true;
     enableZshIntegration = true;
 
     settings = {
-      font-family = [
-        "Maple Mono"
-        "DejaVu Sans"
-      ];
+      font-family = [ "Maple Mono" "DejaVu Sans" ];
       font-size = "${if (host == "laptop") then "16" else "17"}";
-      font-feature = [
-        "calt"
-        "ss03"
-      ];
+      font-feature = [ "calt" "ss03" ];
 
       bold-is-bright = false;
       selection-invert-fg-bg = true;
@@ -54,7 +47,9 @@
         "shift+home=unbind"
         "ctrl+shift+left=unbind"
         "ctrl+shift+right=unbind"
-        "shift+enter=text:\n"
+        ''
+          shift+enter=text:
+        ''
       ];
     };
 

@@ -2,8 +2,7 @@
 let
   browser = "zen-beta";
   terminal = "ghostty";
-in
-{
+in {
   wayland.windowManager.hyprland = {
     settings = {
       # autostart
@@ -37,9 +36,7 @@ in
         float_switch_override_focus = 0;
         mouse_refocus = 0;
         sensitivity = 0;
-        touchpad = {
-          natural_scroll = true;
-        };
+        touchpad = { natural_scroll = true; };
       };
 
       general = {
@@ -139,9 +136,7 @@ in
         ];
       };
 
-      binds = {
-        movefocus_cycles_fullscreen = true;
-      };
+      binds = { movefocus_cycles_fullscreen = true; };
 
       bind = [
         # show keybinds list
@@ -379,9 +374,7 @@ in
       # Monitor configuration is now defined at the host level
       # See machines/*/hyprland.nix for machine-specific monitor settings
 
-      xwayland = {
-        force_zero_scaling = true;
-      };
+      xwayland = { force_zero_scaling = true; };
     };
   };
 }

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 unicode=" "
-version="1.2.0"
 
 _black=$(tput setaf 0)
 red=$(tput setaf 1)
@@ -26,8 +25,8 @@ up=$(uptime | awk -F'( |,|:)+' '{
     }
     { print h+0,"h",m+0,"m" }
 ')
-up=$(sed -e "s/ h/h/g" <<< ${up})
-up=$(sed -e "s/ m/m/g" <<< ${up})
+up=${up// h/h}
+up=${up// m/m}
 
 pkgs=$(nix-store --query --requisites /run/current-system | wc -l)
 
@@ -35,7 +34,7 @@ fetch() {
     echo "${cyan}$(tput bold)     _  ___      ____  ____    ${normal}$(tput sgr0)"
     echo "${cyan}$(tput bold)    / |/ (_)_ __/ __ \/ __/    ${normal}$(tput sgr0)"
     echo "${cyan}$(tput bold)   /    / /\ \ / /_/ /\ \      ${normal}$(tput sgr0)"
-    echo "${cyan}$(tput bold)  /_/|_/_//_\_"'\\'"____/___/  ${normal}$(tput sgr0)"
+    printf "%s  /_/|_/_//_\\_\\____/___/  %s\n" "${cyan}$(tput bold)" "${normal}$(tput sgr0)"
     echo ""
     echo "  ╭─────────────╮ "
     echo "  │  ${red} ${normal} user    │ ${red}$(whoami)${normal}"
@@ -43,7 +42,7 @@ fetch() {
     echo "  │  ${green} ${normal} kernel  │ ${green}$(uname -r)${normal} "
     echo "  │  ${cyan}󱂬 ${normal} de/wm   │ ${cyan}$XDG_CURRENT_DESKTOP${normal} "
     echo "  │  ${blue} ${normal} uptime  │ ${blue}${up}${normal} "
-    echo "  │  ${magenta} ${normal} shell   │ ${magenta}$(echo ${SHELL##*/})${normal} "
+    echo "  │  ${magenta} ${normal} shell   │ ${magenta}${SHELL##*/}${normal} "
     echo "  │  ${red}󰏖 ${normal} pkgs    │ ${red}${pkgs}${normal} "
     echo "  ├─────────────┤ "
     echo "  │  ${_white}  ${normal}colors  │${_white}$unicode${normal}${red}$unicode${normal}${yellow}$unicode${normal}${green}$unicode${normal}${cyan}$unicode${normal}${blue}$unicode${normal}${magenta}$unicode${normal}${_black}$unicode${normal}"

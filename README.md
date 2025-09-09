@@ -39,10 +39,31 @@
 
 # 🗃️ Overview
 
-## ⚡ New Features
+## ⚡ Recent Major Improvements
 
-This configuration now supports advanced deployment and infrastructure
-management:
+🎉 **Latest Updates**: This configuration has been significantly enhanced with enterprise-grade features:
+
+### 🔐 **Security & Secret Management**
+- **✅ Clan-native secret management** with age encryption
+- **✅ Per-machine access control** for all secrets
+- **✅ Automated secure deployment** via Nix store
+- **✅ Admin keypair generated** and all machines configured
+
+### 🛠️ **Development Excellence**
+- **✅ Comprehensive pre-commit hooks** for code quality
+- **✅ All shell scripts security-hardened** (20+ scripts fixed)
+- **✅ Fast linting workflow** (no more slow `nix flake check`)
+- **✅ Automated formatting and validation**
+
+### 📚 **Complete Documentation**
+- **✅ 6 comprehensive guides** covering all aspects
+- **✅ Quick-start workflows** for common operations
+- **✅ Security best practices** and troubleshooting
+- **✅ Developer contributor guidelines**
+
+## 🏗️ Core Infrastructure Features
+
+This configuration supports advanced deployment and infrastructure management:
 
 ### 🏗️ **Clan Framework Integration**
 
@@ -64,6 +85,22 @@ management:
 - **Rescue system**: Transform any Linux system into NixOS
 - **Zero-touch deployment**: Automated installation without physical access
 - **Custom disk layouts**: Apply disko configurations during remote installs
+
+### 🔐 **Enterprise-Grade Security**
+
+- **Age-encrypted secrets**: Modern cryptography with per-machine access control
+- **Clan secret management**: Native integration with infrastructure management
+- **Secure deployment**: Secrets deployed via Nix store with proper permissions
+- **Access control**: User and machine-level permissions for all secrets
+- **Key rotation**: Easy secret updates and key management
+
+### 🛠️ **Development Excellence**
+
+- **Pre-commit hooks**: Comprehensive code quality enforcement
+- **Shell script security**: All scripts pass shellcheck with security fixes
+- **Fast linting workflow**: Efficient development with targeted validation
+- **Code consistency**: Automated Nix formatting and style enforcement
+- **Git integration**: Automatic quality checks on every commit
 
 ### 🎯 **Semantic Module Organization**
 
@@ -597,7 +634,7 @@ nix run github:clan-lol/clan-core -- machines deploy --update-all
 # Set up machine mesh networking
 nix run github:clan-lol/clan-core -- machines add-peer desktop laptop
 
-# Coordinate services across machines  
+# Coordinate services across machines
 nix run github:clan-lol/clan-core -- services start backup-sync
 
 # Monitor cluster status
@@ -633,12 +670,17 @@ nix run github:clan-lol/clan-core -- services enable zerotier
 
 ---
 
-## 📚 Additional Documentation
+## 📚 Documentation
 
-- **[Clan Workflows Guide](docs/CLAN-WORKFLOWS.md)** - Detailed workflows for
-  managing your infrastructure with Clan
-- **[Migration Guide](docs/MIGRATION-GUIDE.md)** - Step-by-step guide for
-  transitioning from nixos-anywhere to Clan management
+### Infrastructure Management
+- **[Clan Workflows Guide](docs/CLAN-WORKFLOWS.md)** - Daily operations and advanced Clan workflows
+- **[Migration Guide](docs/MIGRATION-GUIDE.md)** - Transitioning from nixos-anywhere to Clan management
+- **[Clan Management](docs/CLAN-MANAGEMENT.md)** - Complete Clan framework reference
+
+### Security & Development
+- **[Security Guide](docs/SECURITY.md)** - Secret management with age encryption
+- **[Development Workflow](docs/DEVELOPMENT.md)** - Pre-commit hooks, linting, and code quality
+- **[Linting Reference](docs/LINTING.md)** - Fast linting commands and hook configuration
 
 ---
 

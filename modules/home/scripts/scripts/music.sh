@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if (ps aux | grep audacious | grep -v grep > /dev/null); then
+if pgrep audacious > /dev/null; then
     pkill audacious
 else
     hyprctl dispatch exec "[workspace 5 silent] audacious -t ~/Music/playlist"

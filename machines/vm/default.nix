@@ -1,8 +1,11 @@
-{ lib, ... }:
-{
-  imports = [
-    ./hardware-configuration.nix
-  ];
+{ lib, ... }: {
+  imports = [ ./hardware-configuration.nix ];
+
+  # Deploy machine-specific age key for secrets
+  environment.etc."machine-age-key" = {
+    text = builtins.readFile ./secrets/vm.key;
+    mode = "0400";
+  };
 
   # kvm/qemu doesn't use UEFI firmware mode by default.
   # so we force-override the setting here

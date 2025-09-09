@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -23,11 +22,7 @@
       package = pkgs.colloid-gtk-theme.override {
         colorVariants = [ "dark" ];
         themeVariants = [ "green" ];
-        tweaks = [
-          "gruvbox"
-          "rimless"
-          "float"
-        ];
+        tweaks = [ "gruvbox" "rimless" "float" ];
       };
     };
     iconTheme = {

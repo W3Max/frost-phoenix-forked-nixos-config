@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   services = {
     gvfs.enable = true;
     gnome = {
@@ -10,18 +9,13 @@
     fstrim.enable = true;
 
     # needed for GNOME services outside of GNOME Desktop
-    dbus.packages = with pkgs; [
-      gcr
-      gnome-settings-daemon
-    ];
+    dbus.packages = with pkgs; [ gcr gnome-settings-daemon ];
   };
   services.logind.settings.Login = {
 
     # don’t shutdown when power button is short-pressed
 
-
     HandlePowerKey = "ignore";
-
 
   };
 }

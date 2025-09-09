@@ -1,11 +1,4 @@
-{
-  pkgs,
-  inputs,
-  username,
-  host,
-  ...
-}:
-{
+{ pkgs, inputs, username, host, ... }: {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
     useUserPackages = true;
@@ -14,28 +7,26 @@
     users.${username} = {
       imports = [
         ./../home-common.nix
-        (./../../machines + "/${host}/hyprland.nix")  # Host-specific hyprland config
+        (./../../machines
+          + "/${host}/hyprland.nix") # Host-specific hyprland config
       ] ++ (
         # Import appropriate module groups based on host type
         if (host == "desktop") then [
           ./../home-desktop.nix
           ./../home-development.nix
           ./../home-gaming.nix
-        ]
-        else if (host == "laptop") then [
+        ] else if (host == "laptop") then [
           ./../home-desktop.nix
           ./../home-development.nix
-        ]
-        else if (host == "w3max-workstation") then [
+        ] else if (host == "w3max-workstation") then [
           ./../home-desktop.nix
           ./../home-development.nix
           ./../home-gaming.nix
-        ]
-        else [
-          # VM or other machines get basic desktop
-          ./../home-desktop.nix
-        ]
-      );
+        ] else
+          [
+            # VM or other machines get basic desktop
+            ./../home-desktop.nix
+          ]);
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";
       home.stateVersion = "24.05";
@@ -47,10 +38,7 @@
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+    extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
   nix.settings.allowed-users = [ "${username}" ];
