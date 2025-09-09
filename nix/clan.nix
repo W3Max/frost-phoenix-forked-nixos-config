@@ -6,8 +6,11 @@
   flake = {    
     # Clan inventory for machine management
     clanInternals = {
-      # Machine inventory  
-      machines = {
+      # Inventory class for clan operations
+      inventoryClass = {
+        # Basic inventory structure  
+        inventory = {
+          machines = {
             desktop = {
               description = "Main desktop system";
               tags = [ "desktop" ];
