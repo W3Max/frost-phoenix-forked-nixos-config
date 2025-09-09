@@ -80,7 +80,7 @@
   };
 
   outputs = inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, ... }: {
+    flake-parts.lib.mkFlake { inherit inputs; } ({ ... }: {
       imports = [
         ./nix/machines.nix      # Machine configurations
         ./nix/clan.nix          # Clan-specific setup
@@ -90,7 +90,7 @@
         "x86_64-linux"
       ];
       
-      perSystem = { config, self', inputs', pkgs, system, ... }: {
+      perSystem = {  pkgs, ... }: {
         formatter = pkgs.nixpkgs-fmt;
       };
     });

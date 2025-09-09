@@ -1,6 +1,6 @@
 # nix/clan.nix
 # Clan configuration for multi-machine management
-{ self, inputs, ... }:
+{ ... }:
 {
   # Clan configuration goes in flake outputs
   flake = {

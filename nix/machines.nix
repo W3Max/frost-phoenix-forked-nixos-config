@@ -1,5 +1,5 @@
 # nix/machines.nix
-{ self, inputs, lib, ... }:
+{ self, inputs, ... }:
 let
   username = "w3max";
 in
