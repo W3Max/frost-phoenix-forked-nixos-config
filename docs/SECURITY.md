@@ -20,9 +20,7 @@ sops/
 │   └── w3max-workstation/key.json
 ├── secrets/                      # Encrypted secret files
 │   ├── user-password.yaml
-│   ├── ssh-host-keys.yaml
-│   ├── wireguard-keys.yaml
-│   └── api-tokens.yaml
+│   └── ssh-host-keys.yaml
 └── .sops.yaml                    # SOPS configuration
 
 /var/lib/sops-nix/key.txt         # Private key location on each machine (NOT in repo)
@@ -38,13 +36,11 @@ sops/
 
 ### Available Secrets
 
-| Secret          | File                  | Purpose                    |
-| --------------- | --------------------- | -------------------------- |
-| `user-password` | `user-password.yaml`  | User account passwords     |
-| `ssh-host-key`  | `ssh-host-keys.yaml`  | SSH host keys              |
-| `wireguard-key` | `wireguard-keys.yaml` | VPN private keys           |
-| `github-token`  | `api-tokens.yaml`     | GitHub API access          |
-| `backup-token`  | `api-tokens.yaml`     | Backup service credentials |
+| Secret          | File                 | Purpose                |
+| --------------- | -------------------- | ---------------------- |
+| `user-password` | `user-password.yaml` | User account passwords |
+| `ssh-host-key`  | `ssh-host-keys.yaml` | VPN private keys       |
+| `github-token`  | `api-tokens.yaml`    | GitHub API access      |
 
 ## Usage
 
@@ -112,6 +108,4 @@ Private keys must be manually deployed to each machine. See
 The secret management integrates with:
 
 - SSH daemon (host keys)
-- WireGuard VPN (private keys)
 - User authentication (password hashes)
-- API services (tokens and credentials)

@@ -10,7 +10,10 @@
 
     secrets = {
       # User password secret
-      user-password = { neededForUsers = true; };
+      user-password = {
+        neededForUsers = true;
+        key = "user_password";
+      };
 
       # SSH host key secret
       ssh-host-key = {
@@ -21,24 +24,10 @@
         group = "root";
       };
 
-      # WireGuard private key
-      wireguard-key = {
-        sopsFile = ../../sops/secrets/wireguard-keys.yaml;
-        key = "wireguard_private_key";
-        mode = "0600";
-        owner = "systemd-network";
-        group = "systemd-network";
-      };
-
       # API tokens
       github-token = {
         sopsFile = ../../sops/secrets/api-tokens.yaml;
         key = "api_tokens.github";
-      };
-
-      backup-token = {
-        sopsFile = ../../sops/secrets/api-tokens.yaml;
-        key = "api_tokens.backup_service";
       };
     };
   };

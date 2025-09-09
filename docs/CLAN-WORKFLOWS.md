@@ -124,10 +124,10 @@ nix run github:clan-lol/clan-core -- machines add-peer <machine-name>
 nix run github:clan-lol/clan-core -- secrets list
 
 # Add new secret (will prompt for content)
-nix run github:clan-lol/clan-core -- secrets set api-key
+nix run github:clan-lol/clan-core -- secrets set user-password
 
 # View secret (requires admin access)
-nix run github:clan-lol/clan-core -- secrets get database-password
+nix run github:clan-lol/clan-core -- secrets get user-password
 
 # Rename secret
 nix run github:clan-lol/clan-core -- secrets rename old-name new-name
@@ -158,9 +158,7 @@ Current secrets available in configurations:
 
 - `user-password` - User account passwords
 - `ssh-host-key` - SSH host keys
-- `wireguard-key` - VPN private keys
-- `github-token` - GitHub API access
-- `backup-token` - Backup service credentials
+- `github-token` - GitHub API accesscredentials
 
 Access in NixOS config: `config.sops.secrets.<name>.path`
 

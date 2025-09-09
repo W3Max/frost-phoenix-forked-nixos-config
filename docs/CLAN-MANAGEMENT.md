@@ -104,7 +104,7 @@ Future service integrations planned:
 
 - **Backup Services**: Automated backups with Restic
 - **Monitoring**: Prometheus + Grafana stack
-- **VPN**: WireGuard mesh networking
+- **VPN**: Netbird mesh networking
 - **Storage**: Distributed storage coordination
 
 ### Service Operations
