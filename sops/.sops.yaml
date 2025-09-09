@@ -4,8 +4,6 @@ keys:
   - &w3max age1drplmvrk3sd89e8gedxenyt3dwtrefcv0mcuvl3xy0qv3ugrzcfqna6xzf
   # Machine keys
   - &desktop age1ll33dvms7wzvzhu9na50d9gawwtctr766mcndmdh3kxy8qqvmvxqeqjqw5
-  - &laptop age1cyz7vmnew6kzx93qzcs8hmdqrgm8fxw2gsjjcgcgwefg4vzth5vsq3fyun
-  - &vm age17nmy0n2rgma3mdn7qtdmltcmju6z0c8amnyduuyzjtd85lt2e4cqgfpeqk
   - &workstation age1220h0yey8y6g8esf73fccpw0qwtmh43005ewl5dkjwf3ct2y25xsnwm3x2
 
 creation_rules:
@@ -13,6 +11,4 @@ creation_rules:
     age: >-
       age1drplmvrk3sd89e8gedxenyt3dwtrefcv0mcuvl3xy0qv3ugrzcfqna6xzf,
       age1ll33dvms7wzvzhu9na50d9gawwtctr766mcndmdh3kxy8qqvmvxqeqjqw5,
-      age1cyz7vmnew6kzx93qzcs8hmdqrgm8fxw2gsjjcgcgwefg4vzth5vsq3fyun,
-      age17nmy0n2rgma3mdn7qtdmltcmju6z0c8amnyduuyzjtd85lt2e4cqgfpeqk,
       age1220h0yey8y6g8esf73fccpw0qwtmh43005ewl5dkjwf3ct2y25xsnwm3x2

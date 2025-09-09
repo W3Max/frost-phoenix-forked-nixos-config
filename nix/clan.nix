@@ -19,18 +19,6 @@
               targetHost = "root@desktop.local";
             };
 
-            laptop = {
-              description = "Mobile laptop system";
-              tags = [ "laptop" "mobile" ];
-              targetHost = "root@laptop.local";
-            };
-
-            vm = {
-              description = "Virtual machine for testing";
-              tags = [ "vm" "test" ];
-              targetHost = "root@vm.local";
-            };
-
             w3max-workstation = {
               description =
                 "AMD Ryzen 7800X3D + RX 7900 XTX Gaming/Dev Station";

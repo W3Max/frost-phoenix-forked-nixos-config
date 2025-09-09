@@ -41,21 +41,25 @@
 
 ## ⚡ Recent Major Improvements
 
-🎉 **Latest Updates**: This configuration has been significantly enhanced with enterprise-grade features:
+🎉 **Latest Updates**: This configuration has been significantly enhanced with
+enterprise-grade features:
 
 ### 🔐 **Security & Secret Management**
+
 - **✅ SOPS + Age encryption** for all secrets
 - **✅ Per-machine access control** with individual keys
 - **✅ Secure key storage** outside repository at `/var/lib/sops-nix/key.txt`
 - **✅ All secrets encrypted** and safe to commit
 
 ### 🛠️ **Development Excellence**
+
 - **✅ Comprehensive pre-commit hooks** for code quality
 - **✅ All shell scripts security-hardened** (20+ scripts fixed)
 - **✅ Fast linting workflow** (no more slow `nix flake check`)
 - **✅ Automated formatting and validation**
 
 ### 📚 **Complete Documentation**
+
 - **✅ 6 comprehensive guides** covering all aspects
 - **✅ Quick-start workflows** for common operations
 - **✅ Security best practices** and troubleshooting
@@ -227,15 +231,18 @@ Nixos (EXPAND)
 - `nc` $\rightarrow$ `nh clean all --keep 5`
 
 **Clan Management:**
-- `cl` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines list`
-- `cs` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines status`
-- `cd` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines deploy`
-- `cdr` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines deploy --dry-run`
-- `cdu` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines deploy --update-all`
-- `csh` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines show`
-- `csl` $\rightarrow$ `nix run github:clan-lol/clan-core -- secrets list`
-- `css` $\rightarrow$ `nix run github:clan-lol/clan-core -- secrets set`
-- `csg` $\rightarrow$ `nix run github:clan-lol/clan-core -- secrets get`
+
+- `clanl` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines list`
+- `clans` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines status`
+- `cland` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines deploy`
+- `clandr` $\rightarrow$
+  `nix run github:clan-lol/clan-core -- machines deploy --dry-run`
+- `clandu` $\rightarrow$
+  `nix run github:clan-lol/clan-core -- machines deploy --update-all`
+- `clansh` $\rightarrow$ `nix run github:clan-lol/clan-core -- machines show`
+- `clansl` $\rightarrow$ `nix run github:clan-lol/clan-core -- secrets list`
+- `clanss` $\rightarrow$ `nix run github:clan-lol/clan-core -- secrets set`
+- `clansg` $\rightarrow$ `nix run github:clan-lol/clan-core -- secrets get`
 
 </details>
 
@@ -321,9 +328,9 @@ on.
 toggle_opacity.sh
 </summary>
 
-**Description:** This script toggles the Hyprland opacity effect. If the
-opacity is currently set to 0.90, it will be set to 1, and if it's set to 1, it
-will be set to 0.90.
+**Description:** This script toggles the Hyprland opacity effect. If the opacity
+is currently set to 0.90, it will be set to 1, and if it's set to 1, it will be
+set to 0.90.
 
 **Usage:** `toggle_opacity`
 
@@ -683,15 +690,24 @@ nix run github:clan-lol/clan-core -- services enable zerotier
 ## 📚 Documentation
 
 ### Infrastructure Management
-- **[Clan Workflows Guide](docs/CLAN-WORKFLOWS.md)** - Daily operations and advanced Clan workflows
-- **[Migration Guide](docs/MIGRATION-GUIDE.md)** - Transitioning from nixos-anywhere to Clan management
-- **[Clan Management](docs/CLAN-MANAGEMENT.md)** - Complete Clan framework reference
+
+- **[Clan Workflows Guide](docs/CLAN-WORKFLOWS.md)** - Daily operations and
+  advanced Clan workflows
+- **[Migration Guide](docs/MIGRATION-GUIDE.md)** - Transitioning from
+  nixos-anywhere to Clan management
+- **[Clan Management](docs/CLAN-MANAGEMENT.md)** - Complete Clan framework
+  reference
 
 ### Security & Development
-- **[Security Guide](docs/SECURITY.md)** - Secret management with SOPS + Age encryption
-- **[Key Distribution](docs/KEY_DISTRIBUTION.md)** - How to deploy private keys to machines
-- **[Development Workflow](docs/DEVELOPMENT.md)** - Pre-commit hooks, linting, and code quality
-- **[Linting Reference](docs/LINTING.md)** - Fast linting commands and hook configuration
+
+- **[Security Guide](docs/SECURITY.md)** - Secret management with SOPS + Age
+  encryption
+- **[Key Distribution](docs/KEY_DISTRIBUTION.md)** - How to deploy private keys
+  to machines
+- **[Development Workflow](docs/DEVELOPMENT.md)** - Pre-commit hooks, linting,
+  and code quality
+- **[Linting Reference](docs/LINTING.md)** - Fast linting commands and hook
+  configuration
 
 ---
 
