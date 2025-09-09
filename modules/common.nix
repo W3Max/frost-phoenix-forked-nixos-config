@@ -4,6 +4,7 @@
   imports = [
     # Essential system modules
     ./core/bootloader.nix
+    ./core/clan-settings.nix
     ./core/hardware.nix
     ./core/network.nix
     ./core/security.nix
