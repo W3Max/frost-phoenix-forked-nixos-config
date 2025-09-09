@@ -155,7 +155,6 @@ Utils (EXPAND)
 - `c` $\rightarrow$ `clear`
 - `cd` $\rightarrow$ `z`
 - `tt` $\rightarrow$ `gtrash put`
-- `vim` $\rightarrow$ `nvim`
 - `cat` $\rightarrow$ `bat`
 - `nano` $\rightarrow$ `micro`
 - `code` $\rightarrow$ `codium`

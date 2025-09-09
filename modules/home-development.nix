@@ -4,7 +4,6 @@
     # Home development modules
     ./home/git.nix
     ./home/lazygit.nix
-    ./home/nvim.nix
     ./home/vscodium
     ./home/ssh.nix
     ./home/flow.nix
