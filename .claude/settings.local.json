@@ -11,7 +11,8 @@
       "Bash(nix develop:*)",
       "Bash(git commit:*)",
       "Bash(cat:*)",
-      "Bash(age-keygen:*)"
+      "Bash(age-keygen:*)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": []

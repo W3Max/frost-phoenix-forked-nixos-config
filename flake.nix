@@ -22,13 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Remote NixOS installation
-    nixos-anywhere = {
-      url = "github:nix-community/nixos-anywhere";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.disko.follows = "disko";
-    };
-
     # Hardware-specific optimizations
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 

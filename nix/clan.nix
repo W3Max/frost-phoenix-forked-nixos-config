@@ -3,8 +3,8 @@
 { ... }: {
   # Clan configuration goes in flake outputs
   flake = {
-    # Default secrets configuration
-    secrets.age.plugins = [ ];
+    # Secrets configuration for Clan CLI (minimal to avoid errors)
+    secrets = { age = { plugins = [ ]; }; };
 
     # Clan inventory for machine management
     clanInternals = {

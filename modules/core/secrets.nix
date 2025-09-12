@@ -4,8 +4,13 @@
 
   # Configure sops with machine-specific age key
   sops = {
-    # Key should be manually placed at this location on each machine
-    age.keyFile = "/var/lib/sops-nix/key.txt";
+    age = {
+      keyFile = "/var/lib/sops-nix/key.txt";
+      # Automatically generate age key during installation
+      generateKey = true;
+      # Also support SSH host keys as fallback
+      sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    };
 
     secrets = {
       # User password secret - needed for user creation
