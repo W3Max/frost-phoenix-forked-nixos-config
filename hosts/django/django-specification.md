@@ -1,6 +1,6 @@
 ## hostname
 
-- w3max-workstation
+- django
 
 ## Case
 
