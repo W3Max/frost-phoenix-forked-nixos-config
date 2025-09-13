@@ -56,14 +56,6 @@
     let
       username = "w3max";
       system = "x86_64-linux";
-      # pkgs = import nixpkgs {
-      #   inherit system;
-      #   config.allowUnfree = true;
-      #   config.permittedInsecurePackages = [
-      #     "ventoy-1.1.05"
-      #   ];
-      # };
-      # lib = nixpkgs.lib;
     in
     {
       nixosConfigurations = {
@@ -72,6 +64,14 @@
           modules = [ ./hosts/desktop ];
           specialArgs = {
             host = "desktop";
+            inherit self inputs username;
+          };
+        };
+        django = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/django ];
+          specialArgs = {
+            host = "django";
             inherit self inputs username;
           };
         };

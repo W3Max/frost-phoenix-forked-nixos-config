@@ -13,7 +13,7 @@
     extraSpecialArgs = { inherit inputs username host; };
     users.${username} = {
       imports =
-        if (host == "desktop") then
+        if (host == "desktop" || host == "django") then
           [ ./../home/default.desktop.nix ]
         else
           [ ./../home ];

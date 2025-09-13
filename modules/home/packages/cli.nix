@@ -94,7 +94,6 @@
     wineWowPackages.waylandFull
 
     ## For Automated Homelab Project
-    ventoy
     expect
   ];
 }
